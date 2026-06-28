@@ -132,7 +132,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   className={`block ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}
                 >
-                  Welcome to
+                  UI/UX Designer
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, x: -30 }}
@@ -140,7 +140,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                   transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-brand-accent mt-1"
                 >
-                  Saad's Lab V2 Test
+                  Digital Creator
                 </motion.span>
               </h1>
               
