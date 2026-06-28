@@ -1,0 +1,6 @@
+{
+  "name": "Saad's Lab",
+  "description": "The official digital identity and creative portfolio of Ahmad Saad, featuring high-fidelity interactive designs, case studies, and experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
