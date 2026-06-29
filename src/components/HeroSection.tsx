@@ -60,7 +60,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="min-h-[85vh] md:min-h-[90vh] lg:min-h-screen flex flex-col justify-center pt-24 pb-12 md:pt-28 md:pb-16 relative w-full overflow-hidden transition-colors duration-500"
+      className="min-h-[90vh] lg:min-h-screen flex flex-col justify-center pt-24 pb-12 md:pt-28 md:pb-16 relative w-full overflow-hidden transition-colors duration-500"
     >
       {/* Dynamic Background subtle gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -73,13 +73,13 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10">
-        <div className="grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] lg:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-10 lg:gap-16 items-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-center w-full">
           
-          {/* LEFT COLUMN: CONTENT (Logo, Hero Label, Name, Main Heading, Description, Buttons) */}
-          <div className="flex flex-col justify-center text-left">
+          {/* LEFT COLUMN: CONTENT (Logo, Hero Label, Mobile Portrait, Name, Main Heading, Description, Buttons, Trust Bar) */}
+          <div className="md:col-span-7 flex flex-col justify-center text-left">
             
             {/* Logo and Digital Identity group */}
-            <div className="space-y-2 mb-6 md:mb-8">
+            <div className="space-y-2 mb-6">
               {/* 1. Brand Logo */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -108,8 +108,48 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </motion.div>
             </div>
 
+            {/* MOBILE ONLY: PORTRAIT (appears right after labels and before name) */}
+            <div className="block md:hidden my-6 w-full max-w-[210px] sm:max-w-[240px]">
+              <div className="relative">
+                {/* Soft Premium Radial Glow Backdrop */}
+                <div 
+                  className="absolute inset-0 rounded-full blur-2xl opacity-50 pointer-events-none -z-10"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(124,92,255,0.2) 0%, rgba(0,0,0,0) 70%)'
+                  }}
+                />
+                
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className={`aspect-[4/5] rounded-[24px] p-2 relative transition-all duration-300 ${
+                    isDarkMode 
+                      ? 'bg-zinc-950 border border-zinc-850 shadow-[0_15px_40px_rgba(0,0,0,0.7)]' 
+                      : 'bg-white border border-zinc-200 shadow-xl'
+                  }`}
+                >
+                  {/* Thin gold border frame */}
+                  <div className={`absolute inset-0 m-1.5 rounded-[18px] border ${
+                    isDarkMode ? 'border-brand-accent/25' : 'border-brand-accent/20'
+                  } pointer-events-none z-20`} />
+                  
+                  {/* Image Container with crop */}
+                  <div className="w-full h-full overflow-hidden relative rounded-[14px]">
+                    <img
+                      src={imageSrc}
+                      onError={handleImageError}
+                      alt="Ahmad Saad - Portrait"
+                      className="w-full h-full object-cover object-top filter contrast-[1.02] brightness-[0.98]"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+
             {/* Name & Main Heading */}
-            <div className="space-y-2 mb-4 md:mb-5 relative">
+            <div className="space-y-2 mb-4 relative">
               {/* Elegant Cursive Signature in Gold */}
               <motion.div
                 initial={{ opacity: 0, y: 10, rotate: -3 }}
@@ -157,7 +197,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className={`text-sm sm:text-[15px] md:text-base leading-relaxed max-w-[480px] md:max-w-[500px] mb-6 md:mb-8 font-sans ${
+              className={`text-sm sm:text-[15px] md:text-base leading-relaxed max-w-[480px] md:max-w-[500px] mb-6 font-sans ${
                 isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
               }`}
             >
@@ -169,7 +209,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="flex flex-row items-center gap-[18px]"
+              className="flex flex-row items-center gap-[18px] mb-8"
             >
               <button
                 onClick={() => onNavigate('projects')}
@@ -196,13 +236,77 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </button>
             </motion.div>
 
+            {/* Premium Trust Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className={`py-4 border-y ${
+                isDarkMode 
+                  ? 'border-zinc-900 text-zinc-400' 
+                  : 'border-zinc-200 text-zinc-650'
+              } w-full`}
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-4 gap-x-4 md:gap-x-2 items-center justify-between w-full">
+                {/* Item 1 */}
+                <div className="text-left flex flex-col justify-center">
+                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    30+
+                  </span>
+                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                    Projects
+                  </span>
+                </div>
+                
+                {/* Item 2 */}
+                <div className={`text-left flex flex-col justify-center pl-4 border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'}`}>
+                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    4+
+                  </span>
+                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                    Years Exp.
+                  </span>
+                </div>
+
+                {/* Item 3 */}
+                <div className={`text-left flex flex-col justify-center border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'} border-l-0 sm:border-l pl-0 sm:pl-4`}>
+                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    UI/UX
+                  </span>
+                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                    & Graphic Design
+                  </span>
+                </div>
+
+                {/* Item 4 */}
+                <div className={`text-left flex flex-col justify-center border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'} sm:border-l-0 md:border-l sm:pl-0 md:pl-4 pl-4`}>
+                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    Snapchat
+                  </span>
+                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                    Lens Creator
+                  </span>
+                </div>
+
+                {/* Item 5 */}
+                <div className={`text-left flex flex-col justify-center pl-4 border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'} sm:border-l`}>
+                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    Google
+                  </span>
+                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                    Certified
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
 
-          {/* RIGHT COLUMN: PROFILE IMAGE */}
-          <div className="flex items-center justify-center relative w-full md:justify-end">
+          {/* DESKTOP/TABLET RIGHT COLUMN: PROFILE IMAGE (hidden on mobile, perfectly integrated on md+) */}
+          <div className="hidden md:flex md:col-span-5 items-center justify-center relative w-full md:justify-end">
             {/* Soft Premium Radial Glow Backdrop */}
             <div 
-              className="absolute w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] lg:w-[420px] lg:h-[420px] rounded-full blur-3xl opacity-60 pointer-events-none -z-10"
+              className="absolute w-[240px] h-[240px] md:w-[280px] md:h-[280px] lg:w-[420px] lg:h-[420px] rounded-full blur-3xl opacity-60 pointer-events-none -z-10"
               style={{
                 background: 'radial-gradient(circle, rgba(124,92,255,0.18) 0%, rgba(0,0,0,0) 70%)'
               }}
@@ -216,23 +320,27 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 90, damping: 22, delay: 0.15 }}
-              className={`w-full max-w-[220px] sm:max-w-[260px] md:max-w-[240px] lg:max-w-[340px] xl:max-w-[360px] aspect-[4/5] rounded-[24px] lg:rounded-[32px] overflow-hidden shadow-2xl relative border group transition-all duration-300 ${
-                isDarkMode ? 'border-zinc-850 bg-zinc-950/40' : 'border-zinc-200 bg-white'
+              className={`w-full max-w-[240px] sm:max-w-[280px] md:max-w-[260px] lg:max-w-[350px] xl:max-w-[370px] aspect-[4/5] rounded-[24px] lg:rounded-[32px] p-2 relative transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-zinc-950 border border-zinc-850 shadow-[0_20px_50px_rgba(0,0,0,0.8)]' 
+                  : 'bg-white border border-zinc-200 shadow-xl'
               }`}
             >
+              {/* Thin gold border frame */}
+              <div className={`absolute inset-0 m-1.5 rounded-[20px] lg:rounded-[28px] border ${
+                isDarkMode ? 'border-brand-accent/30' : 'border-brand-accent/25'
+              } pointer-events-none z-20`} />
+              
               {/* Image Container with micro Zoom effect */}
-              <div className="w-full h-full overflow-hidden relative">
+              <div className="w-full h-full overflow-hidden relative rounded-[16px] lg:rounded-[24px] group">
                 <img
                   src={imageSrc}
                   onError={handleImageError}
                   alt="Ahmad Saad - Portrait"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03] filter contrast-[1.01] brightness-[0.99]"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-[1.04] filter contrast-[1.02] brightness-[0.98]"
                   referrerPolicy="no-referrer"
                 />
               </div>
-
-              {/* Minimal borders */}
-              <div className="absolute inset-0 rounded-[24px] lg:rounded-[32px] border border-white/5 pointer-events-none" />
             </motion.div>
           </div>
 

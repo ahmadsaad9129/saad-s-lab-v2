@@ -61,30 +61,65 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
           {/* LEFT COLUMN: THE NARRATIVE STORY & PHILOSOPHY (col-span-7) */}
-          <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
+          <div className="lg:col-span-7 space-y-8 text-left">
             
             <div className="space-y-4">
-              <h3 className={`text-2xl md:text-3xl lg:text-4xl font-display font-bold leading-tight tracking-tight ${
+              <h3 className={`text-2xl md:text-3xl font-display font-bold leading-tight tracking-tight ${
                 isDarkMode ? 'text-white' : 'text-zinc-950'
               }`}>
                 Designing with intention, solving with empathy.
               </h3>
-              
-              <div className={`space-y-4 leading-relaxed text-sm md:text-base ${
-                isDarkMode ? 'text-zinc-400' : 'text-zinc-650'
-              }`}>
-                <p className={`font-semibold text-base md:text-lg tracking-tight ${
-                  isDarkMode ? 'text-zinc-200' : 'text-zinc-800'
-                }`}>
-                  I am a human-centered UX designer dedicated to turning complex digital challenges into elegant, intuitive experiences. By combining deep user research with strategic problem-solving, I create structured interface designs that feel completely natural and align user needs with business goals.
-                </p>
-                <p>
-                  From initial research and wireframing to pixel-perfect visual design and immersive micro-interactions, I focus on every detail. I craft highly accessible, strategic products that elevate brands and build meaningful connections with people.
-                </p>
+            </div>
+
+            {/* Design Philosophy (3 short bullet points) */}
+            <div className="space-y-3">
+              <h4 className={`text-xs font-mono uppercase tracking-widest font-bold ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                Design Philosophy
+              </h4>
+              <div className={`space-y-3 text-sm md:text-base leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-650'}`}>
+                <div className="flex gap-2.5 items-start">
+                  <span className="text-brand-accent mt-1.5 shrink-0 select-none text-xs">◆</span>
+                  <p>
+                    <strong className={isDarkMode ? 'text-zinc-200' : 'text-zinc-900'}>Human-Centered UX:</strong> Solving complex problems by mapping visual designs directly to native human cognitive behavior.
+                  </p>
+                </div>
+                <div className="flex gap-2.5 items-start">
+                  <span className="text-brand-accent mt-1.5 shrink-0 select-none text-xs">◆</span>
+                  <p>
+                    <strong className={isDarkMode ? 'text-zinc-200' : 'text-zinc-900'}>Strategic Execution:</strong> Aligning deep user research and intuitive wireframes with long-term business goals.
+                  </p>
+                </div>
+                <div className="flex gap-2.5 items-start">
+                  <span className="text-brand-accent mt-1.5 shrink-0 select-none text-xs">◆</span>
+                  <p>
+                    <strong className={isDarkMode ? 'text-zinc-200' : 'text-zinc-900'}>Precision & Craft:</strong> Maintaining high standards for pixel-perfect layout alignment, contrast accessibility, and subtle animations.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Design Philosophy Quote Card */}
+            {/* Core Strengths */}
+            <div className="space-y-3">
+              <h4 className={`text-xs font-mono uppercase tracking-widest font-bold ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                Core Strengths
+              </h4>
+              <div className="flex flex-wrap gap-2.5">
+                {['User Research', 'Wireframing', 'Prototyping', 'UI Design', 'Design Systems'].map((strength, idx) => (
+                  <span
+                    key={idx}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-mono border font-semibold tracking-wide ${
+                      isDarkMode 
+                        ? 'bg-[#121212]/50 border-zinc-850 text-zinc-350' 
+                        : 'bg-white border-zinc-250 text-zinc-700 shadow-sm'
+                    }`}
+                  >
+                    {strength}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* What I Believe: Quote card */}
             <div className={`p-5 md:p-6 rounded-[22px] border relative overflow-hidden ${
               isDarkMode 
                 ? 'bg-gradient-to-br from-zinc-950 to-zinc-900 border-zinc-850 shadow-inner' 
@@ -94,15 +129,15 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
               <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-full blur-xl pointer-events-none" />
               
               <div className="relative z-10 space-y-2">
-                <p className={`text-xs font-mono uppercase tracking-widest ${
+                <p className={`text-xs font-mono uppercase tracking-widest font-bold ${
                   isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
                 }`}>
-                  My Philosophy
+                  What I Believe
                 </p>
-                <blockquote className={`text-lg md:text-xl font-display font-medium leading-relaxed italic ${
+                <blockquote className={`text-base md:text-lg font-display font-medium leading-relaxed italic ${
                   isDarkMode ? 'text-zinc-100' : 'text-zinc-800'
                 }`}>
-                  "I don't just design interfaces. I design experiences people remember."
+                  "Exceptional design isn't about decorating interfaces — it's about eliminating friction to make the complex feel completely natural."
                 </blockquote>
               </div>
             </div>
