@@ -357,10 +357,10 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                 {/* UI/UX & Graphic Design */}
                 <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
                   <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    UI/UX
+                    UI/UX & Graphic Design
                   </span>
                   <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
-                    & Graphic Design
+                    User-Centered Design
                   </span>
                 </div>
 
@@ -370,10 +370,10 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                 {/* Snapchat Lens Creator */}
                 <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
                   <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    Snapchat
+                    Snapchat Lens
                   </span>
                   <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
-                    Lens Creator
+                    AR Creator
                   </span>
                 </div>
 
@@ -383,10 +383,10 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                 {/* Google Certified */}
                 <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
                   <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    Google
+                    Google Certified
                   </span>
                   <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
-                    Certified
+                    Google Analytics & Digital Marketing
                   </span>
                 </div>
               </div>

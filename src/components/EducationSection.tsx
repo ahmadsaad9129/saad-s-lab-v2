@@ -151,28 +151,30 @@ export default function EducationSection({ isDarkMode }: EducationSectionProps) 
                         </div>
                       </div>
 
-                      {/* Focus points listed as modern pills */}
-                      <div className="space-y-2">
-                        <p className={`text-[9px] font-mono uppercase tracking-widest ${
-                          isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
-                        }`}>
-                          Core Learning Areas
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {edu.focus.map((f, idx) => (
-                            <span
-                              key={idx}
-                              className={`text-[9px] font-mono px-2.5 py-0.5 rounded-full ${
-                                isDarkMode
-                                  ? 'bg-zinc-900 border border-zinc-800 text-zinc-400'
-                                  : 'bg-zinc-50 border border-zinc-150 text-zinc-600'
-                              }`}
-                            >
-                              {f}
-                            </span>
-                          ))}
+                      {/* Focus points listed as modern pills - hidden for Class XII and Class X */}
+                      {!(edu.degree.includes('Class XII') || edu.degree.includes('Class X')) && (
+                        <div className="space-y-2">
+                          <p className={`text-[9px] font-mono uppercase tracking-widest ${
+                            isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+                          }`}>
+                            Core Learning Areas
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {edu.focus.map((f, idx) => (
+                              <span
+                                key={idx}
+                                className={`text-[9px] font-mono px-2.5 py-0.5 rounded-full ${
+                                  isDarkMode
+                                    ? 'bg-zinc-900 border border-zinc-800 text-zinc-400'
+                                    : 'bg-zinc-50 border border-zinc-150 text-zinc-600'
+                                }`}
+                              >
+                                {f}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                     </motion.div>
                   </div>

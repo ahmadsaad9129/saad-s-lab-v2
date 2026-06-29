@@ -74,7 +74,7 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
             <p className={`text-sm md:text-base leading-relaxed ${
               isDarkMode ? 'text-zinc-400' : 'text-zinc-650'
             }`}>
-              Whether it's a product, a startup, a freelance project or simply a conversation about design — I'm always open to meaningful collaborations. Let's make something remarkable.
+              Currently open to UI/UX Design, Product Design, AI Workflow and Branding opportunities.
             </p>
 
             {/* Main Action buttons */}

@@ -236,22 +236,26 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
                     <span>DESIGN TOOLKIT</span>
                   </h3>
                   
-                  <div className="space-y-3 text-xs">
+                  <div className="space-y-3.5 text-xs">
                     <div>
-                      <p className="font-semibold text-zinc-900">User Experience</p>
-                      <p className="text-zinc-500 leading-relaxed mt-0.5">Research, Wireframing, Usability Testing, Information Architecture</p>
+                      <p className="font-bold text-zinc-900 tracking-wide uppercase text-[10px]">Design</p>
+                      <p className="text-zinc-500 leading-relaxed mt-0.5">UI Design, UX Design, Wireframing, Prototyping, Design Systems</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-zinc-900">Interface Design</p>
-                      <p className="text-zinc-500 leading-relaxed mt-0.5">Figma Expert, Design Systems, Responsive Layouts, Accessibility</p>
+                      <p className="font-bold text-zinc-900 tracking-wide uppercase text-[10px]">AI</p>
+                      <p className="text-zinc-500 leading-relaxed mt-0.5">Prompt Engineering, AI Workflow Design, AI-Assisted Design, AI Research</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-zinc-900">Graphic & Brand</p>
-                      <p className="text-zinc-500 leading-relaxed mt-0.5">Adobe Photoshop, Canva, Branding books, Logos, Marketing creative</p>
+                      <p className="font-bold text-zinc-900 tracking-wide uppercase text-[10px]">Branding</p>
+                      <p className="text-zinc-500 leading-relaxed mt-0.5">Brand Identity, Logo Design, Visual Branding</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-zinc-900">Development</p>
-                      <p className="text-zinc-500 leading-relaxed mt-0.5">HTML, CSS, Tailwind CSS, React, TypeScript, Git/GitHub, Lens Studio</p>
+                      <p className="font-bold text-zinc-900 tracking-wide uppercase text-[10px]">Growth</p>
+                      <p className="text-zinc-500 leading-relaxed mt-0.5">Content Strategy, Lead Generation, Client Outreach, Digital Marketing</p>
+                    </div>
+                    <div>
+                      <p className="font-bold text-zinc-900 tracking-wide uppercase text-[10px]">Tools</p>
+                      <p className="text-zinc-500 leading-relaxed mt-0.5">Figma, Canva, ChatGPT, Claude, Lovable, Cursor, GitHub, Netlify</p>
                     </div>
                   </div>
                 </div>

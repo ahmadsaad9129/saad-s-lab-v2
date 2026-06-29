@@ -60,15 +60,16 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
         {/* Core Layout Grid: Asymmetric Luxury Editorial */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* LEFT COLUMN: THE NARRATIVE STORY & PHILOSOPHY (col-span-7) */}
+          {/* LEFT COLUMN: THE NARRATIVE STORY, PHILOSOPHY & CORE STRENGTHS (col-span-7) */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 space-y-6 text-left"
+            className="lg:col-span-7 space-y-8 text-left"
           >
             
+            {/* Quote Section (Intact) */}
             <div className="space-y-4">
               <h3 className={`text-2xl md:text-3xl font-display font-bold leading-tight tracking-tight ${
                 isDarkMode ? 'text-white' : 'text-zinc-950'
@@ -77,15 +78,78 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
               </h3>
             </div>
 
-            <div className={`space-y-4 leading-relaxed text-sm md:text-base ${
-              isDarkMode ? 'text-zinc-400' : 'text-zinc-650'
-            }`}>
-              <p>
-                I don't just design interfaces — I map out intuitive structures that align user needs with business goals. By combining deep human-centered research with strategic execution, I ensure that every digital pixel and user transition is completely intentional and feels natural.
-              </p>
-              <p>
-                My design approach focuses on clarity, pixel-perfect layout alignment, and eliminating friction. From early low-fidelity wireframing to high-contrast accessible visual design, I construct thoughtful products that elevate brand identities and create memorable experiences.
-              </p>
+            {/* Design Philosophy */}
+            <div className="space-y-4">
+              <h4 className={`text-xs font-mono uppercase tracking-widest font-bold ${
+                isDarkMode ? 'text-brand-accent/90' : 'text-brand-accent'
+              }`}>
+                Design Philosophy
+              </h4>
+              <div className="space-y-4">
+                {[
+                  {
+                    title: "User-Centered Design",
+                    description: "Creating intuitive interfaces backed by research and usability."
+                  },
+                  {
+                    title: "AI-Assisted Workflow",
+                    description: "Using AI tools to improve design efficiency and creative workflows."
+                  },
+                  {
+                    title: "Product & Brand Thinking",
+                    description: "Designing experiences that balance user needs, business goals and strong visual identity."
+                  }
+                ].map((philo, idx) => (
+                  <div key={idx} className="flex items-start space-x-3.5 group">
+                    <div className="mt-1.5 shrink-0">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-accent shadow-[0_0_8px_#BF953F]" />
+                    </div>
+                    <div>
+                      <h5 className={`text-sm font-semibold tracking-tight ${
+                        isDarkMode ? 'text-zinc-100' : 'text-zinc-900'
+                      }`}>
+                        {philo.title}
+                      </h5>
+                      <p className={`text-xs md:text-sm mt-0.5 leading-relaxed font-light ${
+                        isDarkMode ? 'text-zinc-400' : 'text-zinc-650'
+                      }`}>
+                        {philo.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Services Section */}
+            <div className="space-y-3 pt-2">
+              <h4 className={`text-xs font-mono uppercase tracking-widest font-bold ${
+                isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+              }`}>
+                Services
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "UI/UX Design",
+                  "Product Thinking",
+                  "Brand Identity",
+                  "AI Workflow Design",
+                  "Prompt Engineering",
+                  "Creative Strategy"
+                ].map((service, idx) => (
+                  <motion.span
+                    key={idx}
+                    whileHover={{ scale: 1.03, y: -1 }}
+                    className={`text-[10px] md:text-xs font-mono px-3.5 py-1.5 rounded-full border transition-all duration-300 ${
+                      isDarkMode
+                        ? 'bg-zinc-950/40 border-zinc-850/80 hover:border-brand-accent/40 text-zinc-300 hover:text-[#FCF6BA] hover:bg-brand-accent/[0.02]'
+                        : 'bg-white border-zinc-200 hover:border-brand-accent/50 text-zinc-700 hover:text-zinc-900 hover:bg-brand-accent/[0.01]'
+                    } cursor-default`}
+                  >
+                    {service}
+                  </motion.span>
+                ))}
+              </div>
             </div>
 
           </motion.div>
