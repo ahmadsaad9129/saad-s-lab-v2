@@ -182,10 +182,13 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4 }}
-            className={`lg:col-span-4 p-8 rounded-[32px] border text-left flex flex-col justify-between space-y-6 transition-all duration-300 ${
+            onClick={() => {
+              window.open("https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=1f999682177742f79d3a4198f102acbc&metadata=01", "_blank", "noopener,noreferrer");
+            }}
+            className={`lg:col-span-4 p-8 rounded-[32px] border text-left flex flex-col justify-between space-y-6 transition-all duration-300 cursor-pointer group ${
               isDarkMode
-                ? 'bg-[#121212] border-zinc-850 hover:border-zinc-700 hover:bg-[#151515] hover:shadow-2xl'
-                : 'bg-white border-zinc-200 hover:border-zinc-350 hover:shadow-xl'
+                ? 'bg-[#121212] border-zinc-850 hover:border-yellow-500/30 hover:bg-[#151515] hover:shadow-2xl'
+                : 'bg-white border-zinc-200 hover:border-yellow-500/30 hover:shadow-xl'
             }`}
           >
             <div className="space-y-4">
@@ -196,10 +199,10 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
                 <span className="text-[10px] font-mono text-yellow-500 font-bold">Snap Creator</span>
               </div>
 
-              <h3 className={`text-xl font-display font-bold ${
-                isDarkMode ? 'text-white' : 'text-zinc-900'
+              <h3 className={`text-xl font-display font-bold transition-colors duration-300 ${
+                isDarkMode ? 'text-white group-hover:text-yellow-400' : 'text-zinc-900 group-hover:text-yellow-600'
               }`}>
-                Snap AR Creator
+                Snap AR Creator ↗
               </h3>
 
               <p className={`text-xs leading-relaxed ${
@@ -207,6 +210,14 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
               }`}>
                 Designing interactive, gamified lenses and AR filters inside Snapchat Lens Studio. Blending code, coordinate meshes, and visual assets to explore immersive spatial computing.
               </p>
+            </div>
+
+            {/* Premium CTA Button */}
+            <div className="pt-2">
+              <span className="inline-flex items-center space-x-2 text-xs font-mono font-bold px-4 py-2 rounded-full transition-all duration-300 bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20 group-hover:bg-yellow-500 group-hover:text-black group-hover:border-yellow-500">
+                <span>Try on Snapchat</span>
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </span>
             </div>
 
             <div className="flex items-center space-x-2 text-[10px] font-mono text-zinc-500">

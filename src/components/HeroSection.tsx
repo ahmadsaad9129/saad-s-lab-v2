@@ -368,14 +368,23 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                 <div className={`hidden sm:block w-px h-8 ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'}`} />
 
                 {/* Snapchat Lens Creator */}
-                <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
-                  <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    Snapchat Lens
+                <a 
+                  href="https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=1f999682177742f79d3a4198f102acbc&metadata=01"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start group cursor-pointer"
+                >
+                  <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug transition-colors duration-300 ${
+                    isDarkMode ? 'text-white group-hover:text-yellow-500' : 'text-zinc-900 group-hover:text-yellow-600'
+                  }`}>
+                    Snapchat Lens ↗
                   </span>
-                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed transition-colors duration-300 ${
+                    isDarkMode ? 'text-zinc-400 group-hover:text-yellow-500/80' : 'text-zinc-500 group-hover:text-yellow-600/80'
+                  }`}>
                     AR Creator
                   </span>
-                </div>
+                </a>
 
                 {/* Divider 2 */}
                 <div className={`hidden sm:block w-px h-8 ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'}`} />

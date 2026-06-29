@@ -176,39 +176,52 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
               viewport={{ once: true, margin: "-100px" }}
               className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 items-stretch"
             >
-              {cards.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 16 } }
-                  }}
-                  whileHover={{ y: -4, scale: 1.01 }}
-                  className={`flex flex-col justify-between p-4.5 rounded-2xl border transition-all duration-300 h-full min-h-[110px] w-full cursor-pointer shadow-sm hover:shadow-brand-accent/5 ${
-                    isDarkMode
-                      ? 'bg-[#121212] border-zinc-850 hover:bg-[#161616] hover:border-zinc-800'
-                      : 'bg-white border-zinc-200 hover:shadow-lg hover:border-zinc-350'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className={`p-2 rounded-xl shrink-0 ${isDarkMode ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
-                      {item.icon}
+              {cards.map((item, index) => {
+                const isSnapchat = item.title === "Snapchat Lens Creator";
+                return (
+                  <motion.div
+                    key={index}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 16 } }
+                    }}
+                    whileHover={{ y: -4, scale: 1.01 }}
+                    onClick={() => {
+                      if (isSnapchat) {
+                        window.open("https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=1f999682177742f79d3a4198f102acbc&metadata=01", "_blank", "noopener,noreferrer");
+                      }
+                    }}
+                    className={`flex flex-col justify-between p-4.5 rounded-2xl border transition-all duration-300 h-full min-h-[110px] w-full cursor-pointer shadow-sm hover:shadow-brand-accent/5 ${
+                      isDarkMode
+                        ? 'bg-[#121212] border-zinc-850 hover:bg-[#161616] hover:border-zinc-800'
+                        : 'bg-white border-zinc-200 hover:shadow-lg hover:border-zinc-350'
+                    } ${isSnapchat ? 'hover:border-yellow-500/40' : ''}`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className={`p-2 rounded-xl shrink-0 ${isDarkMode ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
+                        {item.icon}
+                      </div>
+                      {isSnapchat && (
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/15">
+                          Open Lens ↗
+                        </span>
+                      )}
                     </div>
-                  </div>
-                  <div className="space-y-0.5 mt-2">
-                    <h5 className={`text-xs sm:text-sm md:text-base font-bold leading-snug tracking-tight ${
-                      isDarkMode ? 'text-zinc-100' : 'text-zinc-850'
-                    }`}>
-                      {item.title}
-                    </h5>
-                    <p className={`text-[10px] font-mono uppercase tracking-wider ${
-                      isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
-                    }`}>
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+                    <div className="space-y-0.5 mt-2">
+                      <h5 className={`text-xs sm:text-sm md:text-base font-bold leading-snug tracking-tight ${
+                        isDarkMode ? 'text-zinc-100' : 'text-zinc-850'
+                      }`}>
+                        {item.title}
+                      </h5>
+                      <p className={`text-[10px] font-mono uppercase tracking-wider ${
+                        isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+                      }`}>
+                        {item.subtitle}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
 

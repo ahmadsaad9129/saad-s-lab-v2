@@ -188,10 +188,29 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-zinc-900">Interactive Snapchat Lenses (AR Experience)</h4>
+                      <a 
+                        href="https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=1f999682177742f79d3a4198f102acbc&metadata=01"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center space-x-1.5 font-bold text-zinc-900 hover:text-yellow-600 transition-colors duration-300"
+                      >
+                        <span>Interactive Snapchat Lenses (AR Experience)</span>
+                        <span className="text-[10px] transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-sans">↗</span>
+                      </a>
                       <p className="text-zinc-600 leading-relaxed mt-1">
                         Engineered custom augmented reality lenses inside Snapchat Lens Studio using coordinate mapping, shader textures, and lightweight scripting to produce highly engaging spatial games.
                       </p>
+                      <div className="mt-2 flex items-center">
+                        <a 
+                          href="https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=1f999682177742f79d3a4198f102acbc&metadata=01"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-1 px-3 py-1 bg-yellow-500/10 hover:bg-yellow-500 hover:text-black text-[10px] font-mono font-bold text-yellow-700 hover:text-black border border-yellow-500/20 rounded transition-all duration-300"
+                        >
+                          <span>Try on Snapchat</span>
+                          <span className="text-[8px]">↗</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
