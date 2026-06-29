@@ -214,72 +214,49 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </button>
             </motion.div>
 
-            {/* Redesigned Premium Trust Cards */}
+            {/* Minimal Text-Based Credentials Section */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-full"
+              className="w-full mt-10 md:mt-12 lg:mt-16 pb-4"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 w-full">
-                
-                {/* Card 1: UI/UX & Graphic Design */}
-                <div className={`flex items-center space-x-3.5 p-4 lg:p-6 rounded-xl border transition-all duration-300 h-full min-h-[58px] lg:min-h-[72px] ${
-                  isDarkMode 
-                    ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
-                    : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
-                }`}>
-                  <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-zinc-900 text-brand-accent' : 'bg-zinc-100 text-brand-accent'} shrink-0`}>
-                    <Palette size={14} />
-                  </div>
-                  <div className="text-left">
-                    <p className={`text-[11px] font-bold tracking-tight ${isDarkMode ? 'text-zinc-200' : 'text-zinc-800'}`}>
-                      UI/UX & Graphic
-                    </p>
-                    <p className={`text-[8px] font-mono uppercase tracking-wider ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
-                      Creative Design
-                    </p>
-                  </div>
+              <div className="flex flex-wrap sm:flex-nowrap items-stretch w-full gap-y-6 sm:gap-y-0">
+                {/* UI/UX & Graphic Design */}
+                <div className="w-[calc(50%-8px)] sm:w-auto sm:flex-1 flex flex-col justify-center text-left sm:pr-4 md:pr-6 lg:pr-8">
+                  <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    UI/UX
+                  </span>
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 md:mt-1.5 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                    & Graphic Design
+                  </span>
                 </div>
 
-                {/* Card 2: Snapchat Lens Creator */}
-                <div className={`flex items-center space-x-3.5 p-4 lg:p-6 rounded-xl border transition-all duration-300 h-full min-h-[58px] lg:min-h-[72px] ${
-                  isDarkMode 
-                    ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
-                    : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
-                }`}>
-                  <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-zinc-900 text-brand-accent' : 'bg-zinc-100 text-brand-accent'} shrink-0`}>
-                    <Sparkles size={14} />
-                  </div>
-                  <div className="text-left">
-                    <p className={`text-[11px] font-bold tracking-tight ${isDarkMode ? 'text-zinc-200' : 'text-zinc-800'}`}>
-                      Snapchat Lens
-                    </p>
-                    <p className={`text-[8px] font-mono uppercase tracking-wider ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
-                      AR Creator
-                    </p>
-                  </div>
+                {/* Divider 1 */}
+                <div className={`hidden sm:block w-px ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'} self-stretch mx-3 md:mx-4 lg:mx-6`} />
+
+                {/* Snapchat Lens Creator */}
+                <div className="w-[calc(50%-8px)] sm:w-auto sm:flex-1 flex flex-col justify-center text-left sm:px-3 md:px-4 lg:px-6">
+                  <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    Snapchat
+                  </span>
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 md:mt-1.5 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                    Lens Creator
+                  </span>
                 </div>
 
-                {/* Card 3: Google Certified */}
-                <div className={`flex items-center space-x-3.5 p-4 lg:p-6 rounded-xl border transition-all duration-300 h-full min-h-[58px] lg:min-h-[72px] ${
-                  isDarkMode 
-                    ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
-                    : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
-                }`}>
-                  <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-zinc-900 text-brand-accent' : 'bg-zinc-100 text-brand-accent'} shrink-0`}>
-                    <GoogleIcon size={14} />
-                  </div>
-                  <div className="text-left flex flex-col justify-center">
-                    <p className={`text-[11px] font-bold tracking-tight ${isDarkMode ? 'text-zinc-200' : 'text-zinc-800'}`}>
-                      Google Certified
-                    </p>
-                    <p className={`text-[8px] font-mono uppercase tracking-wider opacity-0 select-none`}>
-                      UX Practitioner
-                    </p>
-                  </div>
-                </div>
+                {/* Divider 2 */}
+                <div className={`hidden sm:block w-px ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'} self-stretch mx-3 md:mx-4 lg:mx-6`} />
 
+                {/* Google Certified */}
+                <div className="w-full sm:w-auto sm:flex-1 flex flex-col justify-center text-left mt-2 sm:mt-0 sm:pl-4 md:pl-6 lg:pl-8 border-t sm:border-t-0 border-zinc-800/10 pt-4 sm:pt-0">
+                  <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    Google
+                  </span>
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 md:mt-1.5 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                    Certified
+                  </span>
+                </div>
               </div>
             </motion.div>
 
