@@ -79,75 +79,106 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 xl:gap-24 items-center w-full">
+        {/* Editorial Responsive Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-24 items-center w-full">
           
-          {/* LEFT COLUMN: CONTENT */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left">
-            
-            {/* MOBILE & TABLET ONLY: PORTRAIT (appears right after navbar/top space, before signature) */}
-            <div className="block lg:hidden mb-10 w-[78%] max-w-[280px] sm:max-w-[320px] md:max-w-[360px] mx-auto">
-              <div className="relative">
-                {/* Soft Premium Radial Glow Backdrop */}
-                <div 
-                  className="absolute inset-0 rounded-full blur-2xl opacity-40 pointer-events-none -z-10"
-                  style={{
-                    background: 'radial-gradient(circle, rgba(124,92,255,0.15) 0%, rgba(0,0,0,0) 70%)'
-                  }}
-                />
-                
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className={`aspect-[4/5] rounded-[24px] p-2 relative transition-all duration-300 ${
-                    isDarkMode 
-                      ? 'bg-zinc-950 border border-zinc-850 shadow-[0_12px_35px_rgba(0,0,0,0.65)]' 
-                      : 'bg-white border border-zinc-200 shadow-xl'
-                  }`}
-                >
-                  {/* Thin gold border frame */}
-                  <div className={`absolute inset-0 m-1.5 rounded-[18px] border ${
-                    isDarkMode ? 'border-brand-accent/25' : 'border-brand-accent/20'
-                  } pointer-events-none z-20`} />
-                  
-                  {/* Image Container with crop focused on the face */}
-                  <div className="w-full h-full overflow-hidden relative rounded-[14px]">
-                    <img
-                      src={imageSrc}
-                      onError={handleImageError}
-                      alt="Ahmad Saad - Portrait"
-                      className="w-full h-full object-cover scale-[1.18] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                </motion.div>
+          {/* RIGHT COLUMN: PORTRAIT VISUAL ANCHOR (Comes first on mobile, second on desktop) */}
+          <div className="order-1 lg:order-2 lg:col-span-5 flex items-center justify-center w-full mb-4 lg:mb-0">
+            <div className="relative p-4 sm:p-6 w-full max-w-[280px] xs:max-w-[310px] sm:max-w-[350px] md:max-w-[370px] lg:max-w-[410px] xl:max-w-[450px] aspect-[4/5] mx-auto lg:mx-0">
+              {/* Editorial Technical Corner Ticks for a highly crafted designed aesthetic */}
+              {/* Top Left */}
+              <div className={`absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              {/* Top Right */}
+              <div className={`absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              {/* Bottom Left */}
+              <div className={`absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              {/* Bottom Right */}
+              <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              
+              {/* Monospace Metadata Accents to ground the studio theme */}
+              <div className="absolute top-1.5 left-5 text-[7px] sm:text-[8px] font-mono text-zinc-500/80 tracking-widest pointer-events-none select-none uppercase">
+                Identity Anchor // V2.0
               </div>
-            </div>
+              <div className="absolute bottom-1.5 right-5 text-[7px] sm:text-[8px] font-mono text-zinc-500/80 tracking-widest pointer-events-none select-none uppercase">
+                Saad's Lab Studio
+              </div>
 
-            {/* SAAD'S LAB • DIGITAL IDENTITY V2.0 */}
+              {/* soft gold ambient backdrop glow */}
+              <div 
+                className="absolute inset-4 rounded-full blur-3xl opacity-35 pointer-events-none -z-10"
+                style={{
+                  background: 'radial-gradient(circle, rgba(229,169,59,0.18) 0%, rgba(0,0,0,0) 70%)'
+                }}
+              />
+
+              {/* Parallax Interactive Framer/Linear Inspired Card */}
+              <motion.div
+                style={{
+                  translateX,
+                  translateY,
+                }}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 90, damping: 22, delay: 0.1 }}
+                className={`w-full h-full rounded-[24px] lg:rounded-[32px] p-2 relative transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-zinc-950/90 border border-zinc-850 shadow-[0_20px_50px_rgba(0,0,0,0.85)]' 
+                    : 'bg-white border border-zinc-200 shadow-2xl'
+                }`}
+              >
+                {/* Micro outer border accent */}
+                <div className={`absolute inset-0 m-2 rounded-[16px] lg:rounded-[24px] border ${
+                  isDarkMode ? 'border-brand-accent/25' : 'border-brand-accent/20'
+                } pointer-events-none z-20`} />
+
+                {/* monospaced design pill */}
+                <div className={`absolute top-4 right-5 z-30 px-2 py-0.5 rounded text-[7px] font-mono font-bold tracking-wider ${
+                  isDarkMode ? 'bg-black/80 text-brand-accent border border-brand-accent/25' : 'bg-white/95 text-zinc-800 border border-zinc-250'
+                }`}>
+                  [REC.V2]
+                </div>
+
+                {/* Refined Image Box with center-face framing and luxury zoom on hover */}
+                <div className="w-full h-full overflow-hidden relative rounded-[12px] lg:rounded-[20px]">
+                  <img
+                    src={imageSrc}
+                    onError={handleImageError}
+                    alt="Ahmad Saad - Portrait"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.25] scale-[1.18] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* LEFT COLUMN: PREMIUM TYPOGRAPHY & IDENTITY (Comes second on mobile, first on desktop) */}
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col justify-center text-center lg:text-left items-center lg:items-start mt-4 lg:mt-0">
+            
+            {/* Identity Label */}
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className={`text-[10px] font-mono tracking-[0.25em] uppercase mb-3 ${
+              className={`text-[9px] sm:text-[10px] font-mono tracking-[0.25em] uppercase mb-2 ${
                 isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
               }`}
             >
               SAAD'S LAB • DIGITAL IDENTITY V2.0
             </motion.p>
 
-            {/* Name Signature Block */}
+            {/* Signature Block */}
             <motion.div
               initial={{ opacity: 0, y: 10, rotate: -3 }}
               animate={{ opacity: 1, y: 0, rotate: -2 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-left pl-1 mb-3 lg:mb-4"
+              className="font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-center lg:origin-left mb-2 lg:mb-3"
             >
               Ahmad Saad
             </motion.div>
             
-            {/* Main Heading Titles */}
-            <h1 className="text-[32px] sm:text-[40px] md:text-[38px] lg:text-[52px] xl:text-[64px] font-display font-black tracking-tight leading-[0.95] select-none uppercase mb-5 lg:mb-6">
+            {/* Massive Heading Title Block */}
+            <h1 className="text-[36px] xs:text-[42px] sm:text-[54px] md:text-[60px] lg:text-[68px] xl:text-[80px] font-display font-black tracking-tight leading-[0.98] lg:leading-[0.92] select-none uppercase mb-5 lg:mb-6">
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -166,12 +197,12 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </motion.span>
             </h1>
 
-            {/* Sub-tagline: CREATIVE STRATEGY • HUMAN-CENTERED UX • VISUAL DESIGN */}
+            {/* Premium sub-tagline */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className={`text-[9px] sm:text-[11px] font-mono tracking-[0.18em] uppercase flex items-center flex-wrap gap-x-2 gap-y-1 mb-8 lg:mb-10 ${
+              className={`text-[8px] sm:text-[10px] font-mono tracking-[0.18em] uppercase flex items-center flex-wrap gap-x-2 gap-y-1 justify-center lg:justify-start mb-8 lg:mb-10 w-full ${
                 isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
               }`}
             >
@@ -182,12 +213,12 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               <span>VISUAL DESIGN</span>
             </motion.div>
 
-            {/* Buttons Group */}
+            {/* Seamless Interactive Buttons Group */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-row lg:items-center lg:gap-6 mb-8 lg:mb-12 w-full"
+              className="grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-row lg:items-center lg:gap-6 mb-10 lg:mb-14 w-full max-w-[480px] lg:max-w-none"
             >
               <button
                 onClick={() => onNavigate('projects')}
@@ -214,94 +245,52 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </button>
             </motion.div>
 
-            {/* Minimal Text-Based Credentials Section */}
+            {/* Minimal Text-Based Credentials Row */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-full mt-10 md:mt-12 lg:mt-16 pb-4"
+              className="w-full mt-2 lg:mt-4 pb-4 border-t lg:border-t-0 border-zinc-800/10 pt-6 lg:pt-0"
             >
-              <div className="flex flex-wrap sm:flex-nowrap items-stretch w-full gap-y-6 sm:gap-y-0">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between w-full gap-6 sm:gap-4 md:gap-6 lg:gap-8">
                 {/* UI/UX & Graphic Design */}
-                <div className="w-[calc(50%-8px)] sm:w-auto sm:flex-1 flex flex-col justify-center text-left sm:pr-4 md:pr-6 lg:pr-8">
+                <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
                   <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
                     UI/UX
                   </span>
-                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 md:mt-1.5 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
                     & Graphic Design
                   </span>
                 </div>
 
                 {/* Divider 1 */}
-                <div className={`hidden sm:block w-px ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'} self-stretch mx-3 md:mx-4 lg:mx-6`} />
+                <div className={`hidden sm:block w-px h-8 ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'}`} />
 
                 {/* Snapchat Lens Creator */}
-                <div className="w-[calc(50%-8px)] sm:w-auto sm:flex-1 flex flex-col justify-center text-left sm:px-3 md:px-4 lg:px-6">
+                <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
                   <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
                     Snapchat
                   </span>
-                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 md:mt-1.5 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
                     Lens Creator
                   </span>
                 </div>
 
                 {/* Divider 2 */}
-                <div className={`hidden sm:block w-px ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'} self-stretch mx-3 md:mx-4 lg:mx-6`} />
+                <div className={`hidden sm:block w-px h-8 ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'}`} />
 
                 {/* Google Certified */}
-                <div className="w-full sm:w-auto sm:flex-1 flex flex-col justify-center text-left mt-2 sm:mt-0 sm:pl-4 md:pl-6 lg:pl-8 border-t sm:border-t-0 border-zinc-800/10 pt-4 sm:pt-0">
+                <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
                   <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
                     Google
                   </span>
-                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 md:mt-1.5 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
                     Certified
                   </span>
                 </div>
               </div>
             </motion.div>
 
-          </div>
-
-          {/* DESKTOP RIGHT COLUMN: PROFILE IMAGE (hidden on mobile/tablet, perfectly integrated on lg+) */}
-          <div className="hidden lg:flex lg:col-span-5 items-center justify-center relative w-full lg:justify-end">
-            {/* Soft Premium Radial Glow Backdrop */}
-            <div 
-              className="absolute w-[200px] h-[200px] md:w-[240px] md:h-[240px] lg:w-[380px] lg:h-[380px] rounded-full blur-3xl opacity-50 pointer-events-none -z-10"
-              style={{
-                background: 'radial-gradient(circle, rgba(124,92,255,0.15) 0%, rgba(0,0,0,0) 70%)'
-              }}
-            />
-            
-            <motion.div
-              style={{
-                translateX,
-                translateY,
-              }}
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: 'spring', stiffness: 90, damping: 22, delay: 0.15 }}
-              className={`w-full max-w-[210px] sm:max-w-[250px] md:max-w-[230px] lg:max-w-[310px] xl:max-w-[330px] aspect-[4/5] rounded-[24px] lg:rounded-[28px] p-1.5 relative transition-all duration-300 ${
-                isDarkMode 
-                  ? 'bg-zinc-950 border border-zinc-850 shadow-[0_15px_40px_rgba(0,0,0,0.7)]' 
-                  : 'bg-white border border-zinc-200 shadow-xl'
-              }`}
-            >
-              {/* Thin gold border frame */}
-              <div className={`absolute inset-0 m-1.5 rounded-[18px] lg:rounded-[22px] border ${
-                isDarkMode ? 'border-brand-accent/30' : 'border-brand-accent/25'
-              } pointer-events-none z-20`} />
-              
-              {/* Image Container with micro Zoom effect */}
-              <div className="w-full h-full overflow-hidden relative rounded-[14px] lg:rounded-[18px] group">
-                <img
-                  src={imageSrc}
-                  onError={handleImageError}
-                  alt="Ahmad Saad - Portrait"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.22] scale-[1.15] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            </motion.div>
           </div>
 
         </div>
