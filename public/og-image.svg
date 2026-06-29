@@ -1,115 +1,86 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Alex+Brush&amp;display=swap');
       
-      .title-serif {
-        font-family: 'Playfair Display', Georgia, serif;
+      .text-sans {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
       }
-      .title-sans {
+      .text-display {
         font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
       }
       .text-mono {
         font-family: 'JetBrains Mono', monospace;
       }
-      .text-sans {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      .text-signature {
+        font-family: 'Alex Brush', cursive;
       }
     </style>
 
-    <!-- Luxury Dark Background Gradient -->
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050507" />
-      <stop offset="40%" stop-color="#0a0a0f" />
-      <stop offset="100%" stop-color="#12121a" />
+    <!-- Deep Luxury Black Background -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070709" />
+      <stop offset="100%" stop-color="#0B0B0E" />
     </linearGradient>
 
-    <!-- Metallic Gold Gradient -->
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#BF953F" />
-      <stop offset="25%" stop-color="#FCF6BA" />
-      <stop offset="50%" stop-color="#B38728" />
-      <stop offset="75%" stop-color="#FBF5B7" />
-      <stop offset="100%" stop-color="#AA771C" />
+    <!-- Metallic Gold Gradient for High-End Highlights -->
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E5A93B" />
+      <stop offset="50%" stop-color="#F3C067" />
+      <stop offset="100%" stop-color="#E5A93B" />
     </linearGradient>
 
-    <!-- Radial Gold Glow (Background Accent) -->
-    <radialGradient id="glow" cx="80%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#BF953F" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-    </radialGradient>
-
-    <!-- Portrait Arch Mask -->
-    <clipPath id="avatar-clip">
-      <rect x="740" y="115" width="340" height="400" rx="170" />
+    <!-- Portrait Clip Path matching homepage rounding -->
+    <clipPath id="portrait-clip">
+      <rect x="706" y="76" width="388" height="478" rx="24" />
     </clipPath>
   </defs>
 
   <!-- Background Base -->
-  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#bg-grad)" />
 
-  <!-- Subtle Radial Glow on the Right Side -->
-  <circle cx="910" cy="315" r="500" fill="url(#glow)" />
+  <!-- LEFT COLUMN: BRANDING & TYPOGRAPHY -->
+  <g transform="translate(80, 0)">
+    
+    <!-- Identity / Category Label -->
+    <text x="0" y="115" fill="#71717A" class="text-mono" font-size="10" font-weight="700" letter-spacing="4.5">SAAD'S LAB • DIGITAL IDENTITY</text>
 
-  <!-- Fine Design Gridlines (Luxury Theme Elements) -->
-  <g stroke="url(#gold)" stroke-width="0.3" stroke-opacity="0.08">
-    <!-- Horizontal Gridlines -->
-    <line x1="0" y1="105" x2="1200" y2="105" />
-    <line x1="0" y1="210" x2="1200" y2="210" />
-    <line x1="0" y1="315" x2="1200" y2="315" />
-    <line x1="0" y1="420" x2="1200" y2="420" />
-    <line x1="0" y1="525" x2="1200" y2="525" />
-    <!-- Vertical Gridlines -->
-    <line x1="150" y1="0" x2="150" y2="630" />
-    <line x1="300" y1="0" x2="300" y2="630" />
-    <line x1="450" y1="0" x2="450" y2="630" />
-    <line x1="600" y1="0" x2="600" y2="630" />
-    <line x1="750" y1="0" x2="750" y2="630" />
-    <line x1="900" y1="0" x2="900" y2="630" />
-    <line x1="1050" y1="0" x2="1050" y2="630" />
+    <!-- Signature Block: Alex Brush Font -->
+    <text x="0" y="180" fill="#E5A93B" class="text-signature" font-size="44" font-weight="400">Ahmad Saad</text>
+
+    <!-- Headline: UI/UX Designer (White) -->
+    <text x="0" y="260" fill="#FFFFFF" class="text-display" font-size="60" font-weight="700" letter-spacing="-1.5">UI/UX DESIGNER</text>
+
+    <!-- Headline: Digital Creator (Gold Gradient) -->
+    <text x="0" y="325" fill="url(#gold-grad)" class="text-display" font-size="60" font-weight="700" letter-spacing="-1.5">DIGITAL CREATOR</text>
+
+    <!-- Sub-tagline / Core Competencies -->
+    <text x="0" y="380" fill="#A1A1AA" class="text-mono" font-size="10" font-weight="500" letter-spacing="2.5">CREATIVE STRATEGY  •  HUMAN-CENTERED UX  •  VISUAL DESIGN</text>
+
+    <!-- Divider Line -->
+    <line x1="0" y1="430" x2="320" y2="430" stroke="#262626" stroke-width="1.5" />
+
+    <!-- Website URL (Minimal text style) -->
+    <text x="0" y="475" fill="#E5A93B" class="text-mono" font-size="12" font-weight="700" letter-spacing="3">WWW.SAADSLAB.ONLINE</text>
+    
+    <!-- Extra subtle indicator to match homepage bento style -->
+    <text x="0" y="525" fill="#52525B" class="text-sans" font-size="12" font-weight="400">Portfolio &amp; Selected Works • 2026 Edition</text>
+
   </g>
 
-  <!-- Abstract Design Circle Frame behind Portrait -->
-  <circle cx="910" cy="315" r="230" fill="none" stroke="url(#gold)" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="10 8" />
-  <circle cx="910" cy="315" r="240" fill="none" stroke="url(#gold)" stroke-width="0.5" stroke-opacity="0.1" />
-
-  <!-- LEFT COLUMN: BRANDING & HEADLINES -->
-  <g transform="translate(100, 0)">
-    <!-- Saad's Lab Title -->
-    <text x="0" y="165" fill="url(#gold)" class="title-sans" font-size="28" font-weight="700" letter-spacing="6">SAAD'S LAB</text>
-    <line x1="0" y1="185" x2="180" y2="185" stroke="url(#gold)" stroke-width="1.5" stroke-opacity="0.7" />
-
-    <!-- Name of the Designer -->
-    <text x="0" y="275" fill="#FFFFFF" class="title-serif" font-size="64" font-weight="700" letter-spacing="-1">Ahmad Saad</text>
-
-    <!-- Dynamic Roles/Subheadings -->
-    <text x="0" y="325" fill="url(#gold)" class="text-mono" font-size="14" font-weight="500" letter-spacing="5">UI/UX DESIGNER &amp; DIGITAL CREATOR</text>
-
-    <!-- Professional Capability Description -->
-    <text x="0" y="395" fill="#E4E4E7" class="text-sans" font-size="18" font-weight="400" letter-spacing="0">
-      <tspan x="0" dy="0" fill="#A1A1AA">Specializing in </tspan>
-      <tspan fill="#FFFFFF" font-weight="500">Premium UI/UX, Product Design, AI Workflows</tspan>
-      <tspan fill="#A1A1AA"> and </tspan>
-      <tspan fill="#FFFFFF" font-weight="500">Branding</tspan>
-      <tspan x="0" dy="30" fill="#A1A1AA">Crafting high-contrast, intentional digital experiences backed by research.</tspan>
-    </text>
-
-    <!-- Canonical Portfolio URL Indicator -->
-    <g transform="translate(0, 505)">
-      <rect width="250" height="34" rx="17" fill="#18181B" stroke="url(#gold)" stroke-width="1" stroke-opacity="0.4" />
-      <text x="125" y="21" fill="#FCF6BA" class="text-mono" font-size="11" font-weight="500" letter-spacing="2" text-anchor="middle">WWW.SAADSLAB.ONLINE</text>
-    </g>
-  </g>
-
-  <!-- RIGHT COLUMN: THE PORTRAIT ARCH -->
+  <!-- RIGHT COLUMN: THE PORTRAIT CONTAINER (Exact Homepage Image Card Replica) -->
   <g>
-    <!-- Outer dashed highlight arch -->
-    <rect x="732" y="107" width="356" height="416" rx="178" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="12 10" />
+    <!-- Outer Card Frame (bg-zinc-950/90 border border-zinc-850) -->
+    <rect x="690" y="60" width="420" height="510" rx="36" fill="#09090C" stroke="#262626" stroke-width="1.5" />
 
-    <!-- Portrait Mask Container -->
-    <image href="https://www.saadslab.online/avatar.jpg" x="740" y="115" width="340" height="400" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatar-clip)" />
+    <!-- Inner Micro Accent Line (border-brand-accent/25) -->
+    <rect x="698" y="68" width="404" height="494" rx="28" fill="none" stroke="#E5A93B" stroke-opacity="0.2" stroke-width="1" />
 
-    <!-- Thin gold accent frame exactly on the arch border -->
-    <rect x="740" y="115" width="340" height="400" rx="170" fill="none" stroke="url(#gold)" stroke-width="3" />
+    <!-- Masked Portrait Image -->
+    <image href="https://www.saadslab.online/avatar.jpg" x="706" y="76" width="388" height="478" preserveAspectRatio="xMidYMid slice" clip-path="url(#portrait-clip)" />
+
+    <!-- Sleek inner frame to seal image edges cleanly -->
+    <rect x="706" y="76" width="388" height="478" rx="24" fill="none" stroke="#262626" stroke-width="1" />
   </g>
+
 </svg>
