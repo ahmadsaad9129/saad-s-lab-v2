@@ -60,7 +60,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="min-h-screen flex flex-col justify-center pt-32 pb-20 relative w-full overflow-hidden transition-colors duration-500"
+      className="min-h-[82vh] md:min-h-screen flex flex-col justify-center pt-20 pb-8 md:pt-24 md:pb-12 relative w-full overflow-hidden transition-colors duration-500"
     >
       {/* Dynamic Background subtle gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -73,79 +73,64 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center w-full">
           
-          {/* MOBILE ONLY: IMAGE FIRST WITH PREMIUM GLOW */}
-          <div className="block lg:hidden w-full max-w-[280px] sm:max-w-[320px] mx-auto relative group">
-            {/* Ambient Mobile Glow */}
-            <div 
-              className="absolute inset-0 rounded-3xl blur-2xl opacity-60 pointer-events-none"
-              style={{
-                background: 'radial-gradient(circle, rgba(124,92,255,0.2) 0%, rgba(0,0,0,0) 70%)'
-              }}
-            />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              className={`relative rounded-3xl overflow-hidden shadow-2xl border ${
-                isDarkMode ? 'border-zinc-800' : 'border-zinc-200'
-              } aspect-[4/5]`}
-            >
-              <img
-                src={imageSrc}
-                onError={handleImageError}
-                alt="Ahmad Saad - UI/UX Designer"
-                className="w-full h-full object-cover object-top filter contrast-[1.02] brightness-[0.98]"
-                referrerPolicy="no-referrer"
-              />
-            </motion.div>
-          </div>
-
-          {/* LEFT SIDE: CONTENT */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-6 md:space-y-8">
+          {/* LEFT COLUMN: CONTENT (Logo, Hero Label, Name, Main Heading, Description, Buttons) */}
+          <div className="md:col-span-7 flex flex-col justify-center text-left space-y-4 md:space-y-5 lg:space-y-6">
             
-            {/* Minimal Premium Kicker */}
+            {/* 1. Brand Logo */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="flex items-center space-x-2"
             >
-              <span className={`h-[1px] w-8 ${isDarkMode ? 'bg-zinc-700' : 'bg-zinc-300'}`} />
-              <span className={`text-[11px] font-mono tracking-widest uppercase ${
-                isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+              <span className="text-xs font-mono font-bold tracking-widest text-brand-accent">S•L</span>
+              <span className={`h-3 w-[1px] ${isDarkMode ? 'bg-zinc-800' : 'bg-zinc-200'}`} />
+              <span className={`text-[10px] font-mono tracking-widest uppercase ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>Saad's Lab</span>
+            </motion.div>
+
+            {/* 2. Hero Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center space-x-2"
+            >
+              <span className={`h-[1px] w-6 ${isDarkMode ? 'bg-zinc-800' : 'bg-zinc-300'}`} />
+              <span className={`text-[10px] font-mono tracking-widest uppercase ${
+                isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
               }`}>
-                Saad's Lab • Digital Identity v2.0
+                Digital Identity v2.0
               </span>
             </motion.div>
 
-            {/* Main Name Heading with reveal animation */}
-            <div className="space-y-3 relative">
+            {/* 3. Name & 4. Main Heading */}
+            <div className="space-y-1.5 md:space-y-2 relative">
               {/* Elegant Cursive Signature in Gold */}
               <motion.div
-                initial={{ opacity: 0, y: 12, rotate: -4 }}
-                animate={{ opacity: 1, y: 0, rotate: -3 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="font-signature text-5xl md:text-6xl text-brand-accent select-none origin-left pl-1"
+                initial={{ opacity: 0, y: 10, rotate: -3 }}
+                animate={{ opacity: 1, y: 0, rotate: -2 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="font-signature text-3xl sm:text-4xl md:text-5xl text-brand-accent select-none origin-left pl-1"
               >
                 Ahmad Saad
               </motion.div>
               
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[0.95] select-none uppercase">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-black tracking-tight leading-[0.95] select-none uppercase">
                 <motion.span
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                   className={`block ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}
                 >
                   UI/UX Designer
                 </motion.span>
                 <motion.span
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-brand-accent mt-1"
+                  transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="block text-brand-accent mt-0.5"
                 >
                   Digital Creator
                 </motion.span>
@@ -155,8 +140,8 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className={`text-xs md:text-sm font-mono tracking-wider uppercase font-bold ${
+                transition={{ duration: 0.8, delay: 0.25 }}
+                className={`text-[10px] sm:text-xs font-mono tracking-wider uppercase font-bold ${
                   isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
                 }`}
               >
@@ -164,59 +149,57 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </motion.p>
             </div>
 
-            {/* Description Body */}
+            {/* 5. Description Body */}
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className={`text-base md:text-lg leading-relaxed max-w-[540px] font-sans ${
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className={`text-sm sm:text-base leading-relaxed max-w-[480px] font-sans ${
                 isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
               }`}
             >
               I design intuitive digital experiences that blend creativity, strategy and usability. From user research to polished interfaces, I build products people genuinely enjoy using.
             </motion.p>
 
-            {/* Elegant CTAs with magnetic style spring hover */}
+            {/* 6. Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 pt-2"
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="flex flex-row flex-wrap gap-3 pt-1"
             >
-              {/* Primary: View Projects */}
               <button
                 onClick={() => onNavigate('projects')}
-                className={`px-8 h-12 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-brand-accent/20 border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+                className={`px-6 sm:px-8 h-11 rounded-full text-[11px] font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-md hover:shadow-brand-accent/15 border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
                   isDarkMode 
                     ? 'bg-white text-black border-transparent hover:bg-zinc-100' 
                     : 'bg-zinc-900 text-white border-transparent hover:bg-zinc-800'
                 }`}
               >
                 <span>VIEW PROJECTS</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={12} />
               </button>
 
-              {/* Secondary: Resume Page Link */}
               <button
                 onClick={() => onNavigate('resume')}
-                className={`px-8 h-12 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+                className={`px-6 sm:px-8 h-11 rounded-full text-[11px] font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
                   isDarkMode
                     ? 'bg-zinc-900/50 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 hover:border-zinc-700'
-                    : 'bg-white border-zinc-200 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300'
+                    : 'bg-white border-zinc-200 text-zinc-650 hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300'
                 }`}
               >
-                <FileText size={14} />
+                <FileText size={12} />
                 <span>DOWNLOAD RESUME</span>
               </button>
             </motion.div>
 
           </div>
 
-          {/* DESKTOP ONLY: RIGHT SIDE FLOAT PORTRAIT */}
-          <div className="hidden lg:col-span-5 lg:flex items-center justify-center relative lg:-mt-6">
+          {/* RIGHT COLUMN / BOTTOM COLUMN: PROFILE IMAGE (Naturally ordered after content on Mobile) */}
+          <div className="md:col-span-5 flex items-center justify-center relative md:-mt-4 w-full">
             {/* Soft Premium Radial Glow Backdrop */}
             <div 
-              className="absolute w-[450px] h-[450px] rounded-full blur-3xl opacity-60 pointer-events-none -z-10"
+              className="absolute w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[260px] md:h-[260px] lg:w-[380px] lg:h-[380px] rounded-full blur-3xl opacity-60 pointer-events-none -z-10"
               style={{
                 background: 'radial-gradient(circle, rgba(124,92,255,0.18) 0%, rgba(0,0,0,0) 70%)'
               }}
@@ -227,9 +210,11 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                 translateX,
                 translateY,
               }}
-              transition={{ type: 'spring', stiffness: 100, damping: 25 }}
-              className={`w-full max-w-[380px] aspect-[4/5] rounded-[36px] overflow-hidden shadow-2xl relative border group transition-all duration-300 ${
-                isDarkMode ? 'border-zinc-800 bg-zinc-950/40' : 'border-zinc-200 bg-white'
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: 'spring', stiffness: 90, damping: 22, delay: 0.15 }}
+              className={`w-full max-w-[200px] sm:max-w-[240px] md:max-w-[220px] lg:max-w-[310px] aspect-[4/5] rounded-[24px] lg:rounded-[32px] overflow-hidden shadow-2xl relative border group transition-all duration-300 ${
+                isDarkMode ? 'border-zinc-850 bg-zinc-950/40' : 'border-zinc-200 bg-white'
               }`}
             >
               {/* Image Container with micro Zoom effect */}
@@ -244,7 +229,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </div>
 
               {/* Minimal borders */}
-              <div className="absolute inset-0 rounded-[36px] border border-white/5 pointer-events-none" />
+              <div className="absolute inset-0 rounded-[24px] lg:rounded-[32px] border border-white/5 pointer-events-none" />
             </motion.div>
           </div>
 

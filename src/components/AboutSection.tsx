@@ -28,14 +28,14 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
   return (
     <section
       id="about"
-      className={`py-24 relative w-full overflow-hidden transition-colors duration-500 border-b ${
+      className={`pt-12 pb-18 relative w-full overflow-hidden transition-colors duration-500 border-b ${
         isDarkMode ? 'bg-[#0C0C0C]' : 'bg-zinc-100/30'
       } ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'}`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Heading with Luxury Border Accent */}
-        <div className="mb-16 border-b pb-8 text-left transition-colors duration-500 border-zinc-200 dark:border-zinc-850">
+        <div className="mb-10 border-b pb-6 text-left transition-colors duration-500 border-zinc-200 dark:border-zinc-850">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 0.5 }}
@@ -58,37 +58,37 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
         </div>
 
         {/* Core Layout Grid: Asymmetric Luxury Editorial */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
           {/* LEFT COLUMN: THE NARRATIVE STORY & PHILOSOPHY (col-span-7) */}
-          <div className="lg:col-span-7 space-y-8 md:space-y-10 text-left">
+          <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               <h3 className={`text-2xl md:text-3xl lg:text-4xl font-display font-bold leading-tight tracking-tight ${
                 isDarkMode ? 'text-white' : 'text-zinc-950'
               }`}>
                 Designing with intention, solving with empathy.
               </h3>
               
-              <div className={`space-y-6 leading-relaxed text-sm md:text-base ${
+              <div className={`space-y-4 leading-relaxed text-sm md:text-base ${
                 isDarkMode ? 'text-zinc-400' : 'text-zinc-650'
               }`}>
                 <p className={`font-semibold text-base md:text-lg tracking-tight ${
                   isDarkMode ? 'text-zinc-200' : 'text-zinc-800'
                 }`}>
-                  I don't believe in simply making interfaces pretty. I believe in solving real, tangible user problems. Every project I create starts with understanding people before designing interfaces — looking closely at cognitive models, emotional states, and physical environments.
+                  I believe exceptional design solves real-world friction. Every experience I create starts with deep human insight, analyzing user behavior, cognitive load, and visual patterns to design solutions that feel completely natural.
                 </p>
                 <p>
-                  By marrying my foundations in computer applications with rigorous human-centered UX design training, I bridge the crucial gap between engineering realities and creative visions. I turn complex logic, tables, and workflows into simple, conversational, and premium digital products that people genuinely enjoy using.
+                  Bridging the gap between engineering complexity and intuitive interaction, I turn intricate workflows into simple, conversational, and premium digital products. I translate complex data into clean interfaces that align user needs with strategic business growth.
                 </p>
                 <p>
-                  Whether wireframing comprehensive logic flows in Figma or constructing cohesive corporate visual languages, I maintain a relentless dedication to layout precision, contrast accessibility, and dynamic interface transitions.
+                  From precise logic architecture in Figma to cohesive visual languages, my dedication lies in layout precision, high accessibility standards, and immersive micro-interactions.
                 </p>
               </div>
             </div>
 
             {/* Design Philosophy Quote Card */}
-            <div className={`p-6 md:p-8 rounded-[28px] border relative overflow-hidden ${
+            <div className={`p-5 md:p-6 rounded-[22px] border relative overflow-hidden ${
               isDarkMode 
                 ? 'bg-gradient-to-br from-zinc-950 to-zinc-900 border-zinc-850 shadow-inner' 
                 : 'bg-gradient-to-br from-white to-zinc-50 border-zinc-200 shadow-sm'
@@ -96,13 +96,13 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
               {/* Subtle background glow */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-full blur-xl pointer-events-none" />
               
-              <div className="relative z-10 space-y-3">
+              <div className="relative z-10 space-y-2">
                 <p className={`text-xs font-mono uppercase tracking-widest ${
                   isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
                 }`}>
                   My Philosophy
                 </p>
-                <blockquote className={`text-xl md:text-2xl font-display font-medium leading-relaxed italic ${
+                <blockquote className={`text-lg md:text-xl font-display font-medium leading-relaxed italic ${
                   isDarkMode ? 'text-zinc-100' : 'text-zinc-800'
                 }`}>
                   "I don't just design interfaces. I design experiences people remember."
@@ -113,51 +113,47 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
           </div>
 
           {/* RIGHT COLUMN: QUICK CREDENTIALS CARDS (col-span-5) */}
-          <div className="lg:col-span-5 space-y-6 text-left w-full">
-            <div className="space-y-4">
-              <h4 className={`text-xs font-mono uppercase tracking-wider font-bold ${
-                isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
-              }`}>
-                Quick Credentials
-              </h4>
-              <div className="grid grid-cols-1 gap-4">
-                {cards.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ y: -4 }}
-                    className={`flex flex-col justify-between p-5 rounded-2xl border transition-all duration-300 h-full ${
-                      isDarkMode
-                        ? 'bg-[#121212] border-zinc-850 hover:bg-[#161616] hover:border-zinc-800'
-                        : 'bg-white border-zinc-200 hover:shadow-lg hover:border-zinc-350'
-                    }`}
-                  >
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div className={`p-2.5 rounded-xl shrink-0 ${isDarkMode ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
-                          {item.icon}
-                        </div>
-                        {item.badge && (
-                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-brand-accent/15 text-brand-accent font-bold uppercase tracking-wider">
-                            {item.badge}
-                          </span>
-                        )}
-                      </div>
-                      <div className="space-y-1.5">
-                        <h5 className={`text-sm md:text-base font-bold leading-snug tracking-tight ${
-                          isDarkMode ? 'text-zinc-100' : 'text-zinc-850'
-                        }`}>
-                          {item.title}
-                        </h5>
-                        <p className={`text-xs ${
-                          isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
-                        }`}>
-                          {item.subtitle}
-                        </p>
-                      </div>
+          <div className="lg:col-span-5 space-y-4 text-left w-full">
+            <h4 className={`text-xs font-mono uppercase tracking-wider font-bold pl-1 ${
+              isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+            }`}>
+              Quick Credentials
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4 items-stretch">
+              {cards.map((item, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -4 }}
+                  className={`flex flex-col justify-between p-5 rounded-2xl border transition-all duration-300 h-full min-h-[128px] w-full ${
+                    isDarkMode
+                      ? 'bg-[#121212] border-zinc-850 hover:bg-[#161616] hover:border-zinc-800'
+                      : 'bg-white border-zinc-200 hover:shadow-lg hover:border-zinc-350'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className={`p-2.5 rounded-xl shrink-0 ${isDarkMode ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
+                      {item.icon}
                     </div>
-                  </motion.div>
-                ))}
-              </div>
+                    {item.badge && (
+                      <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-brand-accent/15 text-brand-accent font-bold uppercase tracking-wider">
+                        {item.badge}
+                      </span>
+                    )}
+                  </div>
+                  <div className="space-y-1">
+                    <h5 className={`text-sm md:text-base font-bold leading-snug tracking-tight ${
+                      isDarkMode ? 'text-zinc-100' : 'text-zinc-850'
+                    }`}>
+                      {item.title}
+                    </h5>
+                    <p className={`text-xs ${
+                      isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+                    }`}>
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
 
