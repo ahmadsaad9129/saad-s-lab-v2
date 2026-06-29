@@ -23,11 +23,20 @@ import ContactSection from './components/ContactSection';
 import ProjectsView from './components/ProjectsView';
 import JourneyView from './components/JourneyView';
 import ResumeView from './components/ResumeView';
+import EasterEgg from './components/EasterEgg';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPath, setCurrentPath] = useState<'home' | 'projects' | 'journey' | 'resume'>('home');
   const [isDarkMode, setIsDarkMode] = useState(true);
+  
+  // Easter Egg tracking states
+  const [isEasterEggOpen, setIsEasterEggOpen] = useState(false);
+
+  const handleNameClick = () => {
+    // Session-based trigger guard (resets upon full browser refresh if needed, but lets allow trigger each session smoothly)
+    setIsEasterEggOpen(true);
+  };
   
   // Subtle interactive background tracking variables
   const bgMouseX = useMotionValue(0);
@@ -169,7 +178,7 @@ export default function App() {
                 className="flex flex-col"
               >
                 {/* 1. Hero Section */}
-                <HeroSection isDarkMode={isDarkMode} onNavigate={handleNavigate} />
+                <HeroSection isDarkMode={isDarkMode} onNavigate={handleNavigate} onNameClick={handleNameClick} />
 
                 {/* 2. About Section */}
                 <AboutSection isDarkMode={isDarkMode} />
@@ -198,6 +207,14 @@ export default function App() {
             )}
 
           </AnimatePresence>
+
+          {/* Premium Hidden Easter Egg */}
+          <EasterEgg 
+            isOpen={isEasterEggOpen} 
+            onClose={() => setIsEasterEggOpen(false)} 
+            onNavigate={handleNavigate} 
+            isDarkMode={isDarkMode} 
+          />
 
         </div>
       )}

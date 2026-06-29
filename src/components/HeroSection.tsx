@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { ArrowUpRight, ArrowRight, ChevronDown, FileText, Compass, Palette, Sparkles, Award } from 'lucide-react';
 // @ts-expect-error - Vite handles static image imports natively at runtime
 import heroPortrait from '../assets/images/regenerated_image_1782663349044.jpg';
@@ -7,6 +7,7 @@ import heroPortrait from '../assets/images/regenerated_image_1782663349044.jpg';
 interface HeroSectionProps {
   isDarkMode: boolean;
   onNavigate: (path: 'home' | 'projects' | 'journey' | 'resume') => void;
+  onNameClick?: () => void;
 }
 
 const GoogleIcon = ({ size = 14 }: { size?: number }) => (
@@ -15,7 +16,7 @@ const GoogleIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
-export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps) {
+export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [imageSrc, setImageSrc] = useState(heroPortrait);
   const [imageAttempt, setImageAttempt] = useState(0); // 0 = local asset, 1 = /input_file_0.png, 2 = /input_file_1.png
@@ -57,6 +58,24 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
     
     mouseX.set(relativeX);
     mouseY.set(relativeY);
+  };
+
+  // Easter egg name click interactions
+  const [isRippling, setIsRippling] = useState(false);
+
+  const handleSignatureClick = () => {
+    if (isRippling) return;
+    setIsRippling(true);
+    setTimeout(() => {
+      setIsRippling(false);
+    }, 600);
+
+    // Wait ~250ms then launch the hidden interaction callback
+    setTimeout(() => {
+      if (onNameClick) {
+        onNameClick();
+      }
+    }, 250);
   };
 
   const handleMouseLeave = () => {
@@ -188,14 +207,41 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               SAAD'S LAB • DIGITAL IDENTITY V2.0
             </motion.p>
 
-            {/* Signature Block - draws left-to-right on load */}
+            {/* Signature Block - draws left-to-right on load, interactive trigger */}
             <motion.div
               initial={{ clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)', opacity: 0 }}
               animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-center lg:origin-left mb-2 lg:mb-3"
+              className="mb-2 lg:mb-3"
             >
-              Ahmad Saad
+              <button
+                onClick={handleSignatureClick}
+                className="group relative font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-center lg:origin-left cursor-pointer bg-transparent border-none p-0 focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent/30 rounded inline-block"
+                title="Secret Interaction"
+              >
+                <span className="relative z-10 transition-all duration-300 group-hover:text-[#FCF6BA]">
+                  Ahmad Saad
+                </span>
+                
+                {/* Subtle underline line animation */}
+                <span className="absolute bottom-1.5 left-0 w-0 h-[1.5px] bg-gradient-to-r from-[#BF953F]/0 via-[#BF953F]/45 to-[#BF953F]/0 transition-all duration-500 ease-out group-hover:w-full" />
+                
+                {/* Micro glow behind on hover */}
+                <span className="absolute inset-0 bg-[#BF953F] opacity-0 blur-md group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none rounded-full" />
+                
+                {/* Real interactive click ripple element */}
+                <AnimatePresence>
+                  {isRippling && (
+                    <motion.span
+                      initial={{ scale: 0.7, opacity: 0.85, filter: 'blur(1px)' }}
+                      animate={{ scale: 1.35, opacity: 0, filter: 'blur(8px)' }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5, ease: 'easeOut' }}
+                      className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-10 bg-gradient-to-r from-transparent via-[#BF953F]/50 to-transparent pointer-events-none rounded-full"
+                    />
+                  )}
+                </AnimatePresence>
+              </button>
             </motion.div>
             
             {/* Massive Heading Title Block - line by line reveal */}

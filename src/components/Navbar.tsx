@@ -7,9 +7,10 @@ interface NavbarProps {
   onNavigate: (path: 'home' | 'projects' | 'journey' | 'resume') => void;
   isDarkMode: boolean;
   onToggleDarkMode: () => void;
+  onLogoClick?: () => void;
 }
 
-export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDarkMode }: NavbarProps) {
+export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDarkMode, onLogoClick }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -45,6 +46,9 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
 
   const handleLogoClick = () => {
     setMobileMenuOpen(false);
+    if (onLogoClick) {
+      onLogoClick();
+    }
     onNavigate('home');
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
