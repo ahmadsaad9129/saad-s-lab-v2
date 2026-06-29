@@ -124,18 +124,30 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </div>
             </div>
 
+            {/* SAAD'S LAB • DIGITAL IDENTITY V2.0 */}
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className={`text-[10px] font-mono tracking-[0.25em] uppercase mb-3 ${
+                isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+              }`}
+            >
+              SAAD'S LAB • DIGITAL IDENTITY V2.0
+            </motion.p>
+
             {/* Name Signature Block */}
             <motion.div
               initial={{ opacity: 0, y: 10, rotate: -3 }}
               animate={{ opacity: 1, y: 0, rotate: -2 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-signature text-[42px] xs:text-[46px] sm:text-[50px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-left pl-1 mb-4 lg:mb-6"
+              className="font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-left pl-1 mb-3 lg:mb-4"
             >
               Ahmad Saad
             </motion.div>
             
             {/* Main Heading Titles */}
-            <h1 className="text-[32px] sm:text-[40px] md:text-[38px] lg:text-[52px] xl:text-[64px] font-display font-black tracking-tight leading-[1.05] sm:leading-[1.02] select-none uppercase flex flex-col gap-2 sm:gap-3 lg:gap-4 mb-8 lg:mb-12">
+            <h1 className="text-[32px] sm:text-[40px] md:text-[38px] lg:text-[52px] xl:text-[64px] font-display font-black tracking-tight leading-[0.95] select-none uppercase mb-5 lg:mb-6">
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -148,11 +160,27 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-brand-accent"
+                className="block text-brand-accent mt-0.5"
               >
                 Digital Creator
               </motion.span>
             </h1>
+
+            {/* Sub-tagline: CREATIVE STRATEGY • HUMAN-CENTERED UX • VISUAL DESIGN */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              className={`text-[9px] sm:text-[11px] font-mono tracking-[0.18em] uppercase flex items-center flex-wrap gap-x-2 gap-y-1 mb-8 lg:mb-10 ${
+                isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
+              }`}
+            >
+              <span>CREATIVE STRATEGY</span>
+              <span className="text-brand-accent font-bold">•</span>
+              <span>HUMAN-CENTERED UX</span>
+              <span className="text-brand-accent font-bold">•</span>
+              <span>VISUAL DESIGN</span>
+            </motion.div>
 
             {/* Buttons Group */}
             <motion.div
