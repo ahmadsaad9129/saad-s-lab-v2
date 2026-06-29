@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
 
 // Data & Types
 import { 
@@ -28,6 +28,27 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPath, setCurrentPath] = useState<'home' | 'projects' | 'journey' | 'resume'>('home');
   const [isDarkMode, setIsDarkMode] = useState(true);
+  
+  // Subtle interactive background tracking variables
+  const bgMouseX = useMotionValue(0);
+  const bgMouseY = useMotionValue(0);
+  
+  const bgSpringX = useSpring(bgMouseX, { stiffness: 40, damping: 20 });
+  const bgSpringY = useSpring(bgMouseY, { stiffness: 40, damping: 20 });
+
+  const bgBackground = useTransform(
+    [bgSpringX, bgSpringY],
+    ([x, y]) => `radial-gradient(550px circle at ${x}px ${y}px, ${isDarkMode ? 'rgba(229, 169, 59, 0.045)' : 'rgba(229, 169, 59, 0.02)'}, transparent 80%)`
+  );
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      bgMouseX.set(e.clientX);
+      bgMouseY.set(e.clientY);
+    };
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, [bgMouseX, bgMouseY]);
   
   // To allow navigating directly to a project's case study from home
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
@@ -70,6 +91,14 @@ export default function App() {
         <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden relative ${
           isDarkMode ? 'bg-[#0C0C0C] text-white' : 'bg-white text-zinc-900'
         }`}>
+          
+          {/* Subtle mouse-follow interactive background gradient (extremely subtle and premium) */}
+          <motion.div
+            className="fixed inset-0 pointer-events-none z-0"
+            style={{
+              background: bgBackground
+            }}
+          />
           
           {/* Custom Cursor System (only active on desktop) */}
           <Cursor />

@@ -61,7 +61,13 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* LEFT COLUMN: THE NARRATIVE STORY & PHILOSOPHY (col-span-7) */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6 text-left"
+          >
             
             <div className="space-y-4">
               <h3 className={`text-2xl md:text-3xl font-display font-bold leading-tight tracking-tight ${
@@ -82,7 +88,7 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
               </p>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* RIGHT COLUMN: QUICK CREDENTIALS CARDS (col-span-5) */}
           <div className="lg:col-span-5 space-y-4 text-left w-full">
@@ -91,12 +97,30 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
             }`}>
               Quick Credentials
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 items-stretch">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15,
+                  }
+                }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 items-stretch"
+            >
               {cards.map((item, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ y: -3 }}
-                  className={`flex flex-col justify-between p-4.5 rounded-2xl border transition-all duration-300 h-full min-h-[110px] w-full ${
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 16 } }
+                  }}
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  className={`flex flex-col justify-between p-4.5 rounded-2xl border transition-all duration-300 h-full min-h-[110px] w-full cursor-pointer shadow-sm hover:shadow-brand-accent/5 ${
                     isDarkMode
                       ? 'bg-[#121212] border-zinc-850 hover:bg-[#161616] hover:border-zinc-800'
                       : 'bg-white border-zinc-200 hover:shadow-lg hover:border-zinc-350'
@@ -121,7 +145,7 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
         </div>

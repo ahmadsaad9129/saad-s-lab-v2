@@ -42,6 +42,10 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
           
           {/* CARD 1: Google Journey (Oversized 7 col card) */}
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4 }}
             className={`lg:col-span-7 p-8 rounded-[32px] border text-left flex flex-col justify-between space-y-8 relative overflow-hidden transition-all duration-300 ${
               isDarkMode
@@ -103,6 +107,10 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
 
           {/* CARD 2: Workshop Speaker (5 col card) */}
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4 }}
             className={`lg:col-span-5 p-8 md:p-10 rounded-[32px] border text-left flex flex-col justify-between transition-all duration-300 ${
               isDarkMode
@@ -134,6 +142,10 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
 
           {/* CARD 3: Smart India Hackathon (4 col card) */}
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4 }}
             className={`lg:col-span-4 p-8 md:p-10 rounded-[32px] border text-left flex flex-col transition-all duration-300 ${
               isDarkMode
@@ -165,6 +177,10 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
 
           {/* CARD 4: Snapchat AR Creator (4 col card) */}
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4 }}
             className={`lg:col-span-4 p-8 rounded-[32px] border text-left flex flex-col justify-between space-y-6 transition-all duration-300 ${
               isDarkMode
@@ -201,6 +217,10 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
 
           {/* CARD 5: Community & Leadership (4 col card) */}
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4 }}
             className={`lg:col-span-4 p-8 rounded-[32px] border text-left flex flex-col justify-between space-y-6 transition-all duration-300 ${
               isDarkMode

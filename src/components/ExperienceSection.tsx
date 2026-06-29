@@ -52,10 +52,16 @@ export default function ExperienceSection({ experiences, isDarkMode }: Experienc
         {/* Timeline Layout */}
         <div className="relative">
           
-          {/* Vertical timeline connector line */}
-          <div className={`absolute left-4 md:left-1/2 top-0 bottom-0 w-[1.5px] -translate-x-[0.75px] ${
-            isDarkMode ? 'bg-zinc-800' : 'bg-zinc-200'
-          }`} />
+          {/* Vertical timeline connector line with smooth scale reveal */}
+          <motion.div 
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            className={`absolute left-4 md:left-1/2 top-0 bottom-0 w-[1.5px] -translate-x-[0.75px] origin-top ${
+              isDarkMode ? 'bg-gradient-to-b from-brand-accent via-zinc-850 to-zinc-900' : 'bg-gradient-to-b from-brand-accent via-zinc-200 to-zinc-350'
+            }`} 
+          />
 
           {/* Experience items loop */}
           <div className="space-y-12">
@@ -70,13 +76,17 @@ export default function ExperienceSection({ experiences, isDarkMode }: Experienc
                   }`}
                 >
                   
-                  {/* Timeline central node */}
+                  {/* Timeline central node - activates on scroll with spring pop-in */}
                   <div className="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-20">
                     <motion.div
-                      whileHover={{ scale: 1.25 }}
+                      initial={{ scale: 0, rotate: -45 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true, margin: '-60px' }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 0.05 }}
+                      whileHover={{ scale: 1.2, borderColor: '#E5A93B' }}
                       className={`w-9 h-9 rounded-full flex items-center justify-center border-2 shadow-lg transition-colors ${
                         isDarkMode 
-                          ? 'bg-zinc-950 border-zinc-800 text-zinc-300 group-hover:border-brand-accent' 
+                          ? 'bg-zinc-950 border-zinc-800 text-zinc-300' 
                           : 'bg-white border-zinc-200 text-zinc-700'
                       }`}
                     >

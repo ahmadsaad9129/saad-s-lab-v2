@@ -55,7 +55,13 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* LEFT: CONTENT & LARGE CTA */}
-          <div className="lg:col-span-6 space-y-6 md:space-y-8 text-left">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-6 md:space-y-8 text-left"
+          >
             <div className="space-y-2">
               <span className="text-xs font-mono tracking-widest text-brand-accent uppercase">Let's Connect</span>
               <h2 className={`text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-tight ${
@@ -66,14 +72,16 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
             </div>
 
             <p className={`text-sm md:text-base leading-relaxed ${
-              isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
+              isDarkMode ? 'text-zinc-400' : 'text-zinc-650'
             }`}>
               Whether it's a product, a startup, a freelance project or simply a conversation about design — I'm always open to meaningful collaborations. Let's make something remarkable.
             </p>
 
             {/* Main Action buttons */}
             <div className="flex flex-wrap gap-4">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 href="mailto:ahmadsaad9129@gmail.com"
                 className={`px-8 py-4 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-brand-accent/20 border ${
                   isDarkMode 
@@ -83,9 +91,11 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
               >
                 <span>LET'S WORK TOGETHER</span>
                 <Mail size={14} />
-              </a>
+              </motion.a>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   onNavigate('resume');
                   window.scrollTo(0, 0);
@@ -98,18 +108,36 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
               >
                 <Download size={14} />
                 <span>DOWNLOAD RESUME</span>
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
 
           {/* RIGHT: BEAUTIFUL CLICKABLE CONTACT CARDS */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 w-full">
+          <motion.div 
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.12,
+                }
+              }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 w-full"
+          >
             {contactCards.map((card, index) => (
               <motion.a
                 key={index}
                 href={card.link}
                 target="_blank"
                 referrerPolicy="no-referrer"
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 120, damping: 14 } }
+                }}
                 whileHover={{ y: -3 }}
                 className={`p-6 rounded-2xl border text-left flex flex-col justify-between h-36 transition-all duration-300 cursor-pointer relative group ${
                   isDarkMode
@@ -142,7 +170,7 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
                 </div>
               </motion.a>
             ))}
-          </div>
+          </motion.div>
 
         </div>
 

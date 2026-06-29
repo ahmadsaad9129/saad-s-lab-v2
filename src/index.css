@@ -40,10 +40,10 @@
     color: #FFFFFF;
   }
 
-  /* Custom thin scrollbar */
+  /* Custom thin gold scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
   }
 
   ::-webkit-scrollbar-track {
@@ -51,8 +51,9 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #262626;
-    border-radius: 3px;
+    background: rgba(229, 169, 59, 0.4);
+    border-radius: 2px;
+    transition: background-color 0.3s;
   }
 
   ::-webkit-scrollbar-thumb:hover {

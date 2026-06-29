@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 export default function Cursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [hoverState, setHoverState] = useState<'default' | 'pointer' | 'view' | 'open' | 'visit' | 'explore'>('default');
+  const [hoverState, setHoverState] = useState<'default' | 'pointer' | 'link' | 'view'>('default');
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -24,19 +24,38 @@ export default function Cursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target) return;
+
+      // 1. Explicit data-cursor attribute check
       const hoverAttr = target.closest('[data-cursor]')?.getAttribute('data-cursor');
-      
-      if (hoverAttr) {
-        setHoverState(hoverAttr as any);
-      } else {
-        // Fallback for general buttons and links
-        const isClickable = target.closest('a, button, [role="button"], input[type="submit"], select, input, textarea');
-        if (isClickable) {
-          setHoverState('pointer');
-        } else {
-          setHoverState('default');
-        }
+      if (hoverAttr === 'view' || hoverAttr === 'open') {
+        setHoverState('view');
+        return;
       }
+
+      // 2. Project Card Hover check
+      const isProjectCard = target.closest('.group') && (target.closest('[id="work"]') || target.closest('.project-card') || target.closest('[key]') && target.closest('.grid'));
+      if (isProjectCard) {
+        setHoverState('view');
+        return;
+      }
+
+      // 3. Navbar and standard page Links (Cursor shrinks)
+      const isNavbarLink = target.closest('#navbar button') && !target.closest('.bg-zinc-950') && !target.closest('.bg-zinc-900');
+      const isLink = target.closest('a') || isNavbarLink || target.closest('.nav-link') || target.tagName === 'A';
+      if (isLink) {
+        setHoverState('link');
+        return;
+      }
+
+      // 4. Buttons & Interactive controls (Cursor expands)
+      const isClickable = target.closest('button') || target.closest('[role="button"]') || target.closest('input') || target.closest('textarea') || target.closest('select');
+      if (isClickable) {
+        setHoverState('pointer');
+        return;
+      }
+
+      setHoverState('default');
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -53,39 +72,32 @@ export default function Cursor() {
 
   const variants = {
     default: {
-      width: 10,
-      height: 10,
-      backgroundColor: '#7C5CFF',
+      width: 8,
+      height: 8,
+      backgroundColor: '#E5A93B',
+      border: 'none',
+      text: null,
     },
     pointer: {
-      width: 48,
-      height: 48,
-      backgroundColor: 'rgba(124, 92, 255, 0.15)',
-      border: '1px solid #7C5CFF',
+      width: 40,
+      height: 40,
+      backgroundColor: 'rgba(229, 169, 59, 0.08)',
+      border: '1px solid #E5A93B',
+      text: null,
+    },
+    link: {
+      width: 4,
+      height: 4,
+      backgroundColor: '#E5A93B',
+      border: 'none',
+      text: null,
     },
     view: {
-      width: 72,
-      height: 72,
-      backgroundColor: '#7C5CFF',
+      width: 70,
+      height: 70,
+      backgroundColor: '#E5A93B',
+      border: 'none',
       text: 'View',
-    },
-    open: {
-      width: 72,
-      height: 72,
-      backgroundColor: '#00C2FF',
-      text: 'Open',
-    },
-    visit: {
-      width: 72,
-      height: 72,
-      backgroundColor: '#7C5CFF',
-      text: 'Visit',
-    },
-    explore: {
-      width: 72,
-      height: 72,
-      backgroundColor: '#00D26A',
-      text: 'Explore',
     },
   };
 
@@ -93,7 +105,7 @@ export default function Cursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex items-center justify-center text-xs font-mono font-bold text-white uppercase select-none tracking-wider"
+      className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex items-center justify-center text-[10px] font-mono font-black text-zinc-950 uppercase select-none tracking-widest"
       style={{
         x: position.x,
         y: position.y,
@@ -104,18 +116,18 @@ export default function Cursor() {
         width: currentVariant.width,
         height: currentVariant.height,
         backgroundColor: currentVariant.backgroundColor,
-        border: (currentVariant as any).border || 'none',
+        border: currentVariant.border,
       }}
-      transition={{ type: 'spring', stiffness: 350, damping: 28, mass: 0.6 }}
+      transition={{ type: 'spring', stiffness: 450, damping: 30, mass: 0.5 }}
     >
-      {'text' in currentVariant && (
+      {currentVariant.text && (
         <motion.span
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
-          className="text-[10px]"
+          transition={{ duration: 0.2 }}
         >
-          {(currentVariant as any).text}
+          {currentVariant.text}
         </motion.span>
       )}
     </motion.div>

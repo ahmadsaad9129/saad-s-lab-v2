@@ -281,20 +281,21 @@ export default function ProjectsSection({ projects, onProjectClick, onNavigate, 
             return (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: Math.min(0.2, index * 0.05) }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: (index % 2) * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                data-cursor="view"
                 className={`${gridColClass} group flex flex-col justify-between border rounded-[32px] overflow-hidden transition-all duration-300 relative ${
                   isDarkMode
-                    ? 'bg-[#121212] border-zinc-850 hover:border-zinc-700 hover:bg-[#151515] hover:shadow-2xl hover:shadow-black/60'
-                    : 'bg-white border-zinc-200 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/50'
+                    ? 'bg-[#121212] border-zinc-850 hover:border-zinc-750 hover:bg-[#151515] hover:shadow-2xl hover:shadow-black/60'
+                    : 'bg-white border-zinc-200 hover:border-zinc-350 hover:shadow-xl hover:shadow-zinc-200/50'
                 }`}
               >
                 
                 {/* Visual Project Thumbnail Frame (Interactive illustrations instead of flat screenshots) */}
                 <div className="aspect-[16/10] w-full overflow-hidden shrink-0 border-b relative">
-                  <div className={`absolute inset-0 transition-transform duration-700 group-hover:scale-[1.03] w-full h-full border-b ${
+                  <div className={`absolute inset-0 transition-transform duration-700 group-hover:scale-[1.06] w-full h-full border-b ${
                     isDarkMode ? 'border-zinc-900' : 'border-zinc-100'
                   }`}>
                     {renderInteractiveMockup(project.id)}

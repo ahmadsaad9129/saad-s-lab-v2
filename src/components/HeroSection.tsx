@@ -41,6 +41,10 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
   const translateX = useTransform(springX, [-0.5, 0.5], [-15, 15]);
   const translateY = useTransform(springY, [-0.5, 0.5], [-15, 15]);
 
+  // Mouse follow glow transform
+  const glowX = useTransform(springX, [-0.5, 0.5], [-100, 100]);
+  const glowY = useTransform(springY, [-0.5, 0.5], [-100, 100]);
+
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -85,69 +89,86 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
           {/* RIGHT COLUMN: PORTRAIT VISUAL ANCHOR (Comes first on mobile, second on desktop) */}
           <div className="order-1 lg:order-2 lg:col-span-5 flex items-center justify-center w-full mb-4 lg:mb-0">
             <div className="relative p-4 sm:p-6 w-full max-w-[280px] xs:max-w-[310px] sm:max-w-[350px] md:max-w-[370px] lg:max-w-[410px] xl:max-w-[450px] aspect-[4/5] mx-auto lg:mx-0">
+              
               {/* Editorial Technical Corner Ticks for a highly crafted designed aesthetic */}
               {/* Top Left */}
-              <div className={`absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              <div className={`absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none z-30`} />
               {/* Top Right */}
-              <div className={`absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              <div className={`absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none z-30`} />
               {/* Bottom Left */}
-              <div className={`absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              <div className={`absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none z-30`} />
               {/* Bottom Right */}
-              <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none`} />
+              <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 ${isDarkMode ? 'border-brand-accent/40' : 'border-brand-accent/35'} pointer-events-none z-30`} />
               
               {/* Monospace Metadata Accents to ground the studio theme */}
-              <div className="absolute top-1.5 left-5 text-[7px] sm:text-[8px] font-mono text-zinc-500/80 tracking-widest pointer-events-none select-none uppercase">
+              <div className="absolute top-1.5 left-5 text-[7px] sm:text-[8px] font-mono text-zinc-500/80 tracking-widest pointer-events-none select-none uppercase z-30">
                 Identity Anchor // V2.0
               </div>
-              <div className="absolute bottom-1.5 right-5 text-[7px] sm:text-[8px] font-mono text-zinc-500/80 tracking-widest pointer-events-none select-none uppercase">
+              <div className="absolute bottom-1.5 right-5 text-[7px] sm:text-[8px] font-mono text-zinc-500/80 tracking-widest pointer-events-none select-none uppercase z-30">
                 Saad's Lab Studio
               </div>
 
-              {/* soft gold ambient backdrop glow */}
-              <div 
-                className="absolute inset-4 rounded-full blur-3xl opacity-35 pointer-events-none -z-10"
+              {/* Premium mouse-follow radial glow behind the portrait */}
+              <motion.div
+                className="absolute w-[350px] h-[350px] rounded-full blur-[90px] bg-brand-accent/20 -z-10 pointer-events-none"
                 style={{
-                  background: 'radial-gradient(circle, rgba(229,169,59,0.18) 0%, rgba(0,0,0,0) 70%)'
+                  x: glowX,
+                  y: glowY,
+                  translateX: '-20%',
+                  translateY: '-20%',
                 }}
               />
 
-              {/* Parallax Interactive Framer/Linear Inspired Card */}
+              {/* Subtle float animation wrapping container */}
               <motion.div
-                style={{
-                  translateX,
-                  translateY,
+                animate={{
+                  y: [0, -8, 0],
                 }}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 90, damping: 22, delay: 0.1 }}
-                className={`w-full h-full rounded-[24px] lg:rounded-[32px] p-2 relative transition-all duration-300 ${
-                  isDarkMode 
-                    ? 'bg-zinc-950/90 border border-zinc-850 shadow-[0_20px_50px_rgba(0,0,0,0.85)]' 
-                    : 'bg-white border border-zinc-200 shadow-2xl'
-                }`}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-full h-full"
               >
-                {/* Micro outer border accent */}
-                <div className={`absolute inset-0 m-2 rounded-[16px] lg:rounded-[24px] border ${
-                  isDarkMode ? 'border-brand-accent/25' : 'border-brand-accent/20'
-                } pointer-events-none z-20`} />
+                {/* Parallax Interactive Framer/Linear Inspired Card */}
+                <motion.div
+                  style={{
+                    translateX,
+                    translateY,
+                  }}
+                  initial={{ opacity: 0, scale: 0.94, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.15 }}
+                  className={`w-full h-full rounded-[24px] lg:rounded-[32px] p-2 relative transition-all duration-300 ${
+                    isDarkMode 
+                      ? 'bg-zinc-950/90 border border-zinc-850 shadow-[0_20px_50px_rgba(0,0,0,0.85)]' 
+                      : 'bg-white border border-zinc-200 shadow-2xl'
+                  }`}
+                >
+                  {/* Micro outer border accent */}
+                  <div className={`absolute inset-0 m-2 rounded-[16px] lg:rounded-[24px] border ${
+                    isDarkMode ? 'border-brand-accent/25' : 'border-brand-accent/20'
+                  } pointer-events-none z-20`} />
 
-                {/* monospaced design pill */}
-                <div className={`absolute top-4 right-5 z-30 px-2 py-0.5 rounded text-[7px] font-mono font-bold tracking-wider ${
-                  isDarkMode ? 'bg-black/80 text-brand-accent border border-brand-accent/25' : 'bg-white/95 text-zinc-800 border border-zinc-250'
-                }`}>
-                  [REC.V2]
-                </div>
+                  {/* monospaced design pill */}
+                  <div className={`absolute top-4 right-5 z-30 px-2 py-0.5 rounded text-[7px] font-mono font-bold tracking-wider ${
+                    isDarkMode ? 'bg-black/80 text-brand-accent border border-brand-accent/25' : 'bg-white/95 text-zinc-800 border border-zinc-250'
+                  }`}>
+                    [REC.V2]
+                  </div>
 
-                {/* Refined Image Box with center-face framing and luxury zoom on hover */}
-                <div className="w-full h-full overflow-hidden relative rounded-[12px] lg:rounded-[20px]">
-                  <img
-                    src={imageSrc}
-                    onError={handleImageError}
-                    alt="Ahmad Saad - Portrait"
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.25] scale-[1.18] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
+                  {/* Refined Image Box with center-face framing and luxury zoom on hover */}
+                  <div className="w-full h-full overflow-hidden relative rounded-[12px] lg:rounded-[20px]">
+                    <img
+                      src={imageSrc}
+                      onError={handleImageError}
+                      alt="Ahmad Saad - Portrait"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.25] scale-[1.18] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -167,41 +188,45 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               SAAD'S LAB • DIGITAL IDENTITY V2.0
             </motion.p>
 
-            {/* Signature Block */}
+            {/* Signature Block - draws left-to-right on load */}
             <motion.div
-              initial={{ opacity: 0, y: 10, rotate: -3 }}
-              animate={{ opacity: 1, y: 0, rotate: -2 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)', opacity: 0 }}
+              animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-center lg:origin-left mb-2 lg:mb-3"
             >
               Ahmad Saad
             </motion.div>
             
-            {/* Massive Heading Title Block */}
+            {/* Massive Heading Title Block - line by line reveal */}
             <h1 className="text-[36px] xs:text-[42px] sm:text-[54px] md:text-[60px] lg:text-[68px] xl:text-[80px] font-display font-black tracking-tight leading-[0.98] lg:leading-[0.92] select-none uppercase mb-5 lg:mb-6">
-              <motion.span
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className={`block ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}
-              >
-                UI/UX Designer
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-brand-accent mt-0.5"
-              >
-                Digital Creator
-              </motion.span>
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className={`block ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}
+                >
+                  UI/UX Designer
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
+                  className="block text-brand-accent mt-0.5"
+                >
+                  Digital Creator
+                </motion.span>
+              </span>
             </h1>
 
             {/* Premium sub-tagline */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 0.58, ease: [0.16, 1, 0.3, 1] }}
               className={`text-[8px] sm:text-[10px] font-mono tracking-[0.18em] uppercase flex items-center flex-wrap gap-x-2 gap-y-1 justify-center lg:justify-start mb-8 lg:mb-10 w-full ${
                 isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
               }`}
@@ -213,36 +238,66 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               <span>VISUAL DESIGN</span>
             </motion.div>
 
-            {/* Seamless Interactive Buttons Group */}
+            {/* Seamless Interactive Buttons Group with Micro-interactions */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
+              transition={{ duration: 0.7, delay: 0.65 }}
               className="grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-row lg:items-center lg:gap-6 mb-10 lg:mb-14 w-full max-w-[480px] lg:max-w-none"
             >
-              <button
+              <motion.button
                 onClick={() => onNavigate('projects')}
-                className={`w-full lg:w-auto px-5 sm:px-8 h-11 md:h-12 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-md hover:shadow-brand-accent/15 border hover:-translate-y-0.5 active:translate-y-0 ${
+                whileHover="hover"
+                whileTap={{ scale: 0.98 }}
+                variants={{
+                  hover: {
+                    scale: 1.03,
+                    boxShadow: '0 12px 30px rgba(229, 169, 59, 0.25)',
+                  }
+                }}
+                className={`w-full lg:w-auto px-5 sm:px-8 h-11 md:h-12 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border ${
                   isDarkMode 
                     ? 'bg-white text-black border-transparent hover:bg-zinc-100' 
                     : 'bg-zinc-900 text-white border-transparent hover:bg-zinc-800'
                 }`}
               >
                 <span>VIEW PROJECTS</span>
-                <ArrowRight size={12} className="shrink-0" />
-              </button>
+                <motion.div
+                  variants={{
+                    hover: { x: 4 }
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <ArrowRight size={12} className="shrink-0" />
+                </motion.div>
+              </motion.button>
 
-              <button
+              <motion.button
                 onClick={() => onNavigate('resume')}
-                className={`w-full lg:w-auto px-5 sm:px-8 h-11 md:h-12 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 ${
+                whileHover="hover"
+                whileTap={{ scale: 0.98 }}
+                variants={{
+                  hover: {
+                    scale: 1.03,
+                    boxShadow: isDarkMode ? '0 12px 30px rgba(255, 255, 255, 0.05)' : '0 12px 30px rgba(0, 0, 0, 0.08)',
+                  }
+                }}
+                className={`w-full lg:w-auto px-5 sm:px-8 h-11 md:h-12 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border ${
                   isDarkMode
                     ? 'bg-zinc-900/50 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 hover:border-zinc-700'
                     : 'bg-white border-zinc-200 text-zinc-650 hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300'
                 }`}
               >
-                <FileText size={12} className="shrink-0" />
+                <motion.div
+                  variants={{
+                    hover: { y: -2 }
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <FileText size={12} className="shrink-0" />
+                </motion.div>
                 <span>DOWNLOAD RESUME</span>
-              </button>
+              </motion.button>
             </motion.div>
 
             {/* Minimal Text-Based Credentials Row */}

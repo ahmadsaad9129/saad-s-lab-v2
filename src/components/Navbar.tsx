@@ -66,13 +66,15 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           
           {/* Logo */}
-          <button
+          <motion.button
             onClick={handleLogoClick}
-            className="flex items-center space-x-2 font-display font-bold text-xl md:text-2xl tracking-tight hover:opacity-80 transition-opacity cursor-pointer group"
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="flex items-center space-x-2 font-display font-bold text-xl md:text-2xl tracking-tight cursor-pointer group"
           >
-            <span className={isDarkMode ? 'text-white' : 'text-zinc-900'}>Saad's</span>
+            <span className={`transition-colors duration-300 ${isDarkMode ? 'text-white group-hover:text-[#FCF6BA]' : 'text-zinc-900 group-hover:text-brand-accent'}`}>Saad's</span>
             <span className="text-brand-accent group-hover:text-brand-secondary-accent transition-colors duration-300">Lab</span>
-          </button>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -83,10 +85,10 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* About (Section Link) */}
               <button
                 onClick={() => handleLinkClick('about', true)}
-                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-brand-accent after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 ${
                   currentPath === 'home' 
                     ? 'text-brand-accent'
-                    : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
+                    : isDarkMode ? 'text-zinc-400 hover:text-zinc-100' : 'text-zinc-600 hover:text-zinc-950'
                 }`}
               >
                 <span>About</span>
@@ -101,10 +103,10 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* Projects (Dedicated Page Link) */}
               <button
                 onClick={() => onNavigate('projects')}
-                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-brand-accent after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 ${
                   currentPath === 'projects'
                     ? 'text-brand-accent font-bold'
-                    : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
+                    : isDarkMode ? 'text-zinc-400 hover:text-zinc-100' : 'text-zinc-600 hover:text-zinc-950'
                 }`}
               >
                 <span>Projects</span>
@@ -119,10 +121,10 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* Journey (Dedicated Page Link) */}
               <button
                 onClick={() => onNavigate('journey')}
-                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-brand-accent after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 ${
                   currentPath === 'journey'
                     ? 'text-brand-accent font-bold'
-                    : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
+                    : isDarkMode ? 'text-zinc-400 hover:text-zinc-100' : 'text-zinc-600 hover:text-zinc-950'
                 }`}
               >
                 <span>Journey</span>
@@ -137,10 +139,10 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* Resume (Dedicated Page Link) */}
               <button
                 onClick={() => onNavigate('resume')}
-                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-brand-accent after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 ${
                   currentPath === 'resume'
                     ? 'text-brand-accent font-bold'
-                    : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
+                    : isDarkMode ? 'text-zinc-400 hover:text-zinc-100' : 'text-zinc-600 hover:text-zinc-950'
                 }`}
               >
                 <span>Résumé</span>
@@ -155,8 +157,8 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* Contact (Section Link) */}
               <button
                 onClick={() => handleLinkClick('contact', true)}
-                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
-                  isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-brand-accent after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 ${
+                  isDarkMode ? 'text-zinc-400 hover:text-zinc-100' : 'text-zinc-600 hover:text-zinc-950'
                 }`}
               >
                 <span>Contact</span>
