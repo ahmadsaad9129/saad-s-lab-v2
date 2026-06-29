@@ -58,9 +58,9 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled
             ? isDarkMode 
-              ? 'bg-[#0B0B0BC0] backdrop-blur-md border-b border-white/[0.05] py-4 shadow-lg shadow-[rgba(0,0,0,0.25)]'
-              : 'bg-white/80 backdrop-blur-md border-b border-black/[0.05] py-4 shadow-md shadow-[rgba(0,0,0,0.05)]'
-            : 'bg-transparent py-6 border-b border-transparent'
+              ? 'bg-[#0B0B0BC0] backdrop-blur-md border-b border-white/[0.05] py-2.5 shadow-lg shadow-[rgba(0,0,0,0.25)]'
+              : 'bg-white/80 backdrop-blur-md border-b border-black/[0.05] py-2.5 shadow-md shadow-[rgba(0,0,0,0.05)]'
+            : 'bg-transparent py-4 border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">

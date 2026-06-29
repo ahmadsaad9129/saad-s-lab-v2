@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { ArrowUpRight, ArrowRight, ChevronDown, FileText, Compass } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, ChevronDown, FileText, Compass, Palette, Sparkles, Award } from 'lucide-react';
 // @ts-expect-error - Vite handles static image imports natively at runtime
 import heroPortrait from '../assets/images/regenerated_image_1782663349044.jpg';
 
@@ -8,6 +8,12 @@ interface HeroSectionProps {
   isDarkMode: boolean;
   onNavigate: (path: 'home' | 'projects' | 'journey' | 'resume') => void;
 }
+
+const GoogleIcon = ({ size = 14 }: { size?: number }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" className="shrink-0">
+    <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.113-5.136 4.113-3.41 0-6.19-2.78-6.19-6.19s2.78-6.19 6.19-6.19c1.55 0 2.96.57 4.05 1.51l3.07-3.07c-1.92-1.78-4.46-2.87-7.12-2.87-6.19 0-11.21 5.02-11.21 11.21s5.02 11.21 11.21 11.21c5.84 0 10.74-4.22 11.21-10.05v-4.14H12.24z" />
+  </svg>
+);
 
 export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,7 +66,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="min-h-[90vh] lg:min-h-screen flex flex-col justify-center pt-24 pb-12 md:pt-28 md:pb-16 relative w-full overflow-hidden transition-colors duration-500"
+      className="min-h-[80vh] md:min-h-[85vh] lg:min-h-screen flex flex-col justify-center pt-24 pb-8 md:pt-28 md:pb-16 relative w-full overflow-hidden transition-colors duration-500"
     >
       {/* Dynamic Background subtle gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -73,49 +79,19 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 lg:gap-20 xl:gap-24 items-center w-full">
           
-          {/* LEFT COLUMN: CONTENT (Logo, Hero Label, Mobile Portrait, Name, Main Heading, Description, Buttons, Trust Bar) */}
+          {/* LEFT COLUMN: CONTENT */}
           <div className="md:col-span-7 flex flex-col justify-center text-left">
             
-            {/* Logo and Digital Identity group */}
-            <div className="space-y-2 mb-6">
-              {/* 1. Brand Logo */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center space-x-2"
-              >
-                <span className="text-xs font-mono font-bold tracking-widest text-brand-accent">S•L</span>
-                <span className={`h-3 w-[1px] ${isDarkMode ? 'bg-zinc-800' : 'bg-zinc-200'}`} />
-                <span className={`text-[10px] font-mono tracking-widest uppercase ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>Saad's Lab</span>
-              </motion.div>
-
-              {/* 2. Hero Label */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center space-x-2"
-              >
-                <span className={`h-[1px] w-6 ${isDarkMode ? 'bg-zinc-800' : 'bg-zinc-300'}`} />
-                <span className={`text-[10px] font-mono tracking-widest uppercase ${
-                  isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
-                }`}>
-                  Digital Identity v2.0
-                </span>
-              </motion.div>
-            </div>
-
-            {/* MOBILE ONLY: PORTRAIT (appears right after labels and before name) */}
-            <div className="block md:hidden my-6 w-full max-w-[210px] sm:max-w-[240px]">
+            {/* MOBILE ONLY: PORTRAIT (appears right after navbar/top space, before signature) */}
+            <div className="block md:hidden mb-6 w-full max-w-[150px] sm:max-w-[170px]">
               <div className="relative">
                 {/* Soft Premium Radial Glow Backdrop */}
                 <div 
-                  className="absolute inset-0 rounded-full blur-2xl opacity-50 pointer-events-none -z-10"
+                  className="absolute inset-0 rounded-full blur-xl opacity-40 pointer-events-none -z-10"
                   style={{
-                    background: 'radial-gradient(circle, rgba(124,92,255,0.2) 0%, rgba(0,0,0,0) 70%)'
+                    background: 'radial-gradient(circle, rgba(124,92,255,0.15) 0%, rgba(0,0,0,0) 70%)'
                   }}
                 />
                 
@@ -123,24 +99,24 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className={`aspect-[4/5] rounded-[24px] p-2 relative transition-all duration-300 ${
+                  className={`aspect-[4/5] rounded-[20px] p-1.5 relative transition-all duration-300 ${
                     isDarkMode 
-                      ? 'bg-zinc-950 border border-zinc-850 shadow-[0_15px_40px_rgba(0,0,0,0.7)]' 
-                      : 'bg-white border border-zinc-200 shadow-xl'
+                      ? 'bg-zinc-950 border border-zinc-850 shadow-[0_10px_30px_rgba(0,0,0,0.6)]' 
+                      : 'bg-white border border-zinc-200 shadow-lg'
                   }`}
                 >
                   {/* Thin gold border frame */}
-                  <div className={`absolute inset-0 m-1.5 rounded-[18px] border ${
+                  <div className={`absolute inset-0 m-1 rounded-[15px] border ${
                     isDarkMode ? 'border-brand-accent/25' : 'border-brand-accent/20'
                   } pointer-events-none z-20`} />
                   
-                  {/* Image Container with crop */}
-                  <div className="w-full h-full overflow-hidden relative rounded-[14px]">
+                  {/* Image Container with crop focused on the face */}
+                  <div className="w-full h-full overflow-hidden relative rounded-[12px]">
                     <img
                       src={imageSrc}
                       onError={handleImageError}
                       alt="Ahmad Saad - Portrait"
-                      className="w-full h-full object-cover object-top filter contrast-[1.02] brightness-[0.98]"
+                      className="w-full h-full object-cover scale-[1.18] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -148,19 +124,20 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </div>
             </div>
 
-            {/* Name & Main Heading */}
-            <div className="space-y-2 mb-4 relative">
+            {/* Name Signature Block */}
+            <div className="flex flex-col gap-5 md:gap-6 mb-10 md:mb-12 relative">
               {/* Elegant Cursive Signature in Gold */}
               <motion.div
                 initial={{ opacity: 0, y: 10, rotate: -3 }}
                 animate={{ opacity: 1, y: 0, rotate: -2 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="font-signature text-3xl sm:text-4xl md:text-[38px] lg:text-[44px] text-brand-accent select-none origin-left pl-1"
+                className="font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] text-brand-accent select-none origin-left pl-1"
               >
                 Ahmad Saad
               </motion.div>
               
-              <h1 className="text-[32px] sm:text-[40px] md:text-[38px] lg:text-[52px] xl:text-[64px] font-display font-black tracking-tight leading-[0.95] select-none uppercase">
+              {/* Main Heading Titles */}
+              <h1 className="text-[32px] sm:text-[40px] md:text-[38px] lg:text-[52px] xl:text-[64px] font-display font-black tracking-tight leading-[1.02] select-none uppercase flex flex-col gap-3 sm:gap-4 md:gap-5">
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -173,47 +150,23 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-brand-accent mt-0.5"
+                  className="block text-brand-accent"
                 >
                   Digital Creator
                 </motion.span>
               </h1>
-              
-              {/* Editorial Subheading */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.25 }}
-                className={`text-[10px] sm:text-xs font-mono tracking-wider uppercase font-bold ${
-                  isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
-                }`}
-              >
-                Creative Strategy <span className="mx-1.5 text-brand-accent">•</span> Human-Centered UX <span className="mx-1.5 text-brand-accent">•</span> Visual Design
-              </motion.p>
             </div>
 
-            {/* Description Body */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className={`text-sm sm:text-[15px] md:text-base leading-relaxed max-w-[480px] md:max-w-[500px] mb-6 font-sans ${
-                isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
-              }`}
-            >
-              I design intuitive digital experiences that blend creativity, strategy and usability. From user research to polished interfaces, I build products people genuinely enjoy using.
-            </motion.p>
-
-            {/* Buttons */}
+            {/* Buttons Group */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
-              className="flex flex-row items-center gap-[18px] mb-8"
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="flex flex-row items-center gap-[14px] md:gap-[18px] mb-10 md:mb-12"
             >
               <button
                 onClick={() => onNavigate('projects')}
-                className={`px-6 sm:px-8 h-11 md:h-12 rounded-full text-[11px] md:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-md hover:shadow-brand-accent/15 border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+                className={`px-5 sm:px-8 h-11 md:h-12 rounded-full text-[11px] md:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-md hover:shadow-brand-accent/15 border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
                   isDarkMode 
                     ? 'bg-white text-black border-transparent hover:bg-zinc-100' 
                     : 'bg-zinc-900 text-white border-transparent hover:bg-zinc-800'
@@ -225,7 +178,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
 
               <button
                 onClick={() => onNavigate('resume')}
-                className={`px-6 sm:px-8 h-11 md:h-12 rounded-full text-[11px] md:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+                className={`px-5 sm:px-8 h-11 md:h-12 rounded-full text-[11px] md:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
                   isDarkMode
                     ? 'bg-zinc-900/50 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 hover:border-zinc-700'
                     : 'bg-white border-zinc-200 text-zinc-650 hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300'
@@ -236,67 +189,69 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               </button>
             </motion.div>
 
-            {/* Premium Trust Bar */}
+            {/* Redesigned Premium Trust Cards */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className={`py-4 border-y ${
-                isDarkMode 
-                  ? 'border-zinc-900 text-zinc-400' 
-                  : 'border-zinc-200 text-zinc-650'
-              } w-full`}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="w-full"
             >
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-4 gap-x-4 md:gap-x-2 items-center justify-between w-full">
-                {/* Item 1 */}
-                <div className="text-left flex flex-col justify-center">
-                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    30+
-                  </span>
-                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
-                    Projects
-                  </span>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 w-full">
                 
-                {/* Item 2 */}
-                <div className={`text-left flex flex-col justify-center pl-4 border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'}`}>
-                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    4+
-                  </span>
-                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
-                    Years Exp.
-                  </span>
+                {/* Card 1: UI/UX & Graphic Design */}
+                <div className={`flex items-center space-x-3.5 p-4.5 md:p-5.5 rounded-xl border transition-all duration-300 h-full min-h-[72px] sm:min-h-0 ${
+                  isDarkMode 
+                    ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
+                    : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
+                }`}>
+                  <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-zinc-900 text-brand-accent' : 'bg-zinc-100 text-brand-accent'} shrink-0`}>
+                    <Palette size={14} />
+                  </div>
+                  <div className="text-left">
+                    <p className={`text-[11px] font-bold tracking-tight ${isDarkMode ? 'text-zinc-200' : 'text-zinc-800'}`}>
+                      UI/UX & Graphic
+                    </p>
+                    <p className={`text-[8px] font-mono uppercase tracking-wider ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                      Creative Design
+                    </p>
+                  </div>
                 </div>
 
-                {/* Item 3 */}
-                <div className={`text-left flex flex-col justify-center border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'} border-l-0 sm:border-l pl-0 sm:pl-4`}>
-                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    UI/UX
-                  </span>
-                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
-                    & Graphic Design
-                  </span>
+                {/* Card 2: Snapchat Lens Creator */}
+                <div className={`flex items-center space-x-3.5 p-4.5 md:p-5.5 rounded-xl border transition-all duration-300 h-full min-h-[72px] sm:min-h-0 ${
+                  isDarkMode 
+                    ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
+                    : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
+                }`}>
+                  <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-zinc-900 text-brand-accent' : 'bg-zinc-100 text-brand-accent'} shrink-0`}>
+                    <Sparkles size={14} />
+                  </div>
+                  <div className="text-left">
+                    <p className={`text-[11px] font-bold tracking-tight ${isDarkMode ? 'text-zinc-200' : 'text-zinc-800'}`}>
+                      Snapchat Lens
+                    </p>
+                    <p className={`text-[8px] font-mono uppercase tracking-wider ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
+                      AR Creator
+                    </p>
+                  </div>
                 </div>
 
-                {/* Item 4 */}
-                <div className={`text-left flex flex-col justify-center border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'} sm:border-l-0 md:border-l sm:pl-0 md:pl-4 pl-4`}>
-                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    Snapchat
-                  </span>
-                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
-                    Lens Creator
-                  </span>
+                {/* Card 3: Google Certified */}
+                <div className={`flex items-center space-x-3.5 p-4.5 md:p-5.5 rounded-xl border transition-all duration-300 h-full min-h-[72px] sm:min-h-0 ${
+                  isDarkMode 
+                    ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
+                    : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
+                }`}>
+                  <div className={`p-2 rounded-lg ${isDarkMode ? 'bg-zinc-900 text-brand-accent' : 'bg-zinc-100 text-brand-accent'} shrink-0`}>
+                    <GoogleIcon size={14} />
+                  </div>
+                  <div className="text-left flex flex-col justify-center">
+                    <p className={`text-[11px] font-bold tracking-tight ${isDarkMode ? 'text-zinc-200' : 'text-zinc-800'}`}>
+                      Google Certified
+                    </p>
+                  </div>
                 </div>
 
-                {/* Item 5 */}
-                <div className={`text-left flex flex-col justify-center pl-4 border-l ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'} sm:border-l`}>
-                  <span className={`text-base md:text-lg font-display font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    Google
-                  </span>
-                  <span className={`text-[9px] md:text-[10px] font-mono uppercase tracking-wider mt-0.5 ${isDarkMode ? 'text-zinc-500' : 'text-zinc-400'}`}>
-                    Certified
-                  </span>
-                </div>
               </div>
             </motion.div>
 
@@ -306,9 +261,9 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
           <div className="hidden md:flex md:col-span-5 items-center justify-center relative w-full md:justify-end">
             {/* Soft Premium Radial Glow Backdrop */}
             <div 
-              className="absolute w-[240px] h-[240px] md:w-[280px] md:h-[280px] lg:w-[420px] lg:h-[420px] rounded-full blur-3xl opacity-60 pointer-events-none -z-10"
+              className="absolute w-[200px] h-[200px] md:w-[240px] md:h-[240px] lg:w-[380px] lg:h-[380px] rounded-full blur-3xl opacity-50 pointer-events-none -z-10"
               style={{
-                background: 'radial-gradient(circle, rgba(124,92,255,0.18) 0%, rgba(0,0,0,0) 70%)'
+                background: 'radial-gradient(circle, rgba(124,92,255,0.15) 0%, rgba(0,0,0,0) 70%)'
               }}
             />
             
@@ -320,24 +275,24 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 90, damping: 22, delay: 0.15 }}
-              className={`w-full max-w-[240px] sm:max-w-[280px] md:max-w-[260px] lg:max-w-[350px] xl:max-w-[370px] aspect-[4/5] rounded-[24px] lg:rounded-[32px] p-2 relative transition-all duration-300 ${
+              className={`w-full max-w-[210px] sm:max-w-[250px] md:max-w-[230px] lg:max-w-[310px] xl:max-w-[330px] aspect-[4/5] rounded-[24px] lg:rounded-[28px] p-1.5 relative transition-all duration-300 ${
                 isDarkMode 
-                  ? 'bg-zinc-950 border border-zinc-850 shadow-[0_20px_50px_rgba(0,0,0,0.8)]' 
+                  ? 'bg-zinc-950 border border-zinc-850 shadow-[0_15px_40px_rgba(0,0,0,0.7)]' 
                   : 'bg-white border border-zinc-200 shadow-xl'
               }`}
             >
               {/* Thin gold border frame */}
-              <div className={`absolute inset-0 m-1.5 rounded-[20px] lg:rounded-[28px] border ${
+              <div className={`absolute inset-0 m-1.5 rounded-[18px] lg:rounded-[22px] border ${
                 isDarkMode ? 'border-brand-accent/30' : 'border-brand-accent/25'
               } pointer-events-none z-20`} />
               
               {/* Image Container with micro Zoom effect */}
-              <div className="w-full h-full overflow-hidden relative rounded-[16px] lg:rounded-[24px] group">
+              <div className="w-full h-full overflow-hidden relative rounded-[14px] lg:rounded-[18px] group">
                 <img
                   src={imageSrc}
                   onError={handleImageError}
                   alt="Ahmad Saad - Portrait"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-[1.04] filter contrast-[1.02] brightness-[0.98]"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.22] scale-[1.15] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
                   referrerPolicy="no-referrer"
                 />
               </div>

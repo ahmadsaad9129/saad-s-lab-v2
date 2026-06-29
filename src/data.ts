@@ -207,7 +207,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     year: '2025',
     title: 'Started MBA in Business Analytics',
     subtitle: 'University of Petroleum and Energy Studies (UPES)',
-    description: 'Enrolled in an online MBA program to specialize in product data analytics, business model metrics, and data-driven product strategy.',
+    description: 'Enrolled in an MBA program to specialize in product data analytics, business model metrics, and data-driven product strategy.',
     icon: 'BarChart'
   },
   {
