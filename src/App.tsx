@@ -74,6 +74,27 @@ export default function App() {
     }
   }, [isDarkMode]);
 
+  // Track Page Views automatically on route and project view changes
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      const pagePath = selectedProjectId 
+        ? `/projects/${selectedProjectId}` 
+        : currentPath === 'home' 
+          ? '/' 
+          : `/${currentPath}`;
+      
+      const pageTitle = selectedProjectId 
+        ? `Project | ${selectedProjectId}` 
+        : currentPath.charAt(0).toUpperCase() + currentPath.slice(1);
+
+      (window as any).gtag('event', 'page_view', {
+        page_title: pageTitle,
+        page_path: pagePath,
+        page_location: window.location.origin + pagePath
+      });
+    }
+  }, [currentPath, selectedProjectId]);
+
   const handleNavigate = (path: 'home' | 'projects' | 'journey' | 'resume') => {
     setCurrentPath(path);
     setSelectedProjectId(null); // Clear selected project when navigating pages
