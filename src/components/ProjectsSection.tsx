@@ -395,6 +395,37 @@ export default function ProjectsSection({ projects, onProjectClick, onNavigate, 
           })}
         </div>
 
+        {/* Premium "More Coming Soon" Area */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-20 pt-16 border-t border-zinc-800/10 dark:border-zinc-800/40 max-w-3xl mx-auto text-center space-y-6"
+        >
+          <h3 className={`text-2xl md:text-3xl font-display font-bold tracking-tight ${
+            isDarkMode ? 'text-white' : 'text-zinc-900'
+          }`}>
+            More Projects Coming Soon
+          </h3>
+          
+          <p className={`text-sm md:text-base leading-relaxed max-w-xl mx-auto font-light ${
+            isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
+          }`}>
+            I'm continuously working on new UI/UX case studies, branding projects, digital experiences, and creative experiments. More work will be added here soon.
+          </p>
+
+          <div className="pt-2 flex justify-center">
+            <span className={`inline-flex items-center space-x-2 px-5 py-2 rounded-full font-mono text-xs font-bold tracking-wide transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-brand-accent/5 text-brand-accent border border-brand-accent/20' 
+                : 'bg-amber-500/5 text-amber-700 border border-amber-500/20'
+            }`}>
+              <span>✨ New Projects Coming Soon</span>
+            </span>
+          </div>
+        </motion.div>
+
         {/* Dynamic section Bottom CTA button */}
         <div className="mt-16 flex justify-center">
           <motion.button

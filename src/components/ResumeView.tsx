@@ -67,8 +67,8 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
             </button>
 
             <a
-              href="/Ahmad_Saad_Resume.pdf"
-              download
+              href="/resume/Ahmad_Saad_Resume.pdf"
+              download="Ahmad_Saad_Resume.pdf"
               className="flex items-center space-x-2 bg-brand-accent text-white px-5 py-3 rounded-full text-xs font-semibold tracking-wider hover:bg-brand-accent-hover hover:shadow-lg hover:shadow-[rgba(124,92,255,0.25)] transition-all cursor-pointer"
               data-cursor="pointer"
             >

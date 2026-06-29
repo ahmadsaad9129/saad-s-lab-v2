@@ -93,13 +93,11 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
                 <Mail size={14} />
               </motion.a>
 
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  onNavigate('resume');
-                  window.scrollTo(0, 0);
-                }}
+                href="/resume/Ahmad_Saad_Resume.pdf"
+                download="Ahmad_Saad_Resume.pdf"
                 className={`px-8 py-4 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer border ${
                   isDarkMode
                     ? 'bg-zinc-900/50 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 hover:border-zinc-700'
@@ -108,7 +106,7 @@ export default function ContactSection({ onNavigate, isDarkMode }: ContactSectio
               >
                 <Download size={14} />
                 <span>DOWNLOAD RESUME</span>
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
 

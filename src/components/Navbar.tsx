@@ -201,8 +201,8 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
                 </button>
               ) : (
                 <a
-                  href="/Ahmad_Saad_Resume.pdf"
-                  download
+                  href="/resume/Ahmad_Saad_Resume.pdf"
+                  download="Ahmad_Saad_Resume.pdf"
                   className="flex items-center space-x-2 bg-brand-accent border-transparent text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider hover:bg-brand-accent-hover hover:shadow-lg hover:shadow-brand-accent/25 transition-all cursor-pointer"
                 >
                   <span>PDF FILE</span>
@@ -344,8 +344,8 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               </button>
             ) : (
               <a
-                href="/Ahmad_Saad_Resume.pdf"
-                download
+                href="/resume/Ahmad_Saad_Resume.pdf"
+                download="Ahmad_Saad_Resume.pdf"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-center space-x-2 bg-brand-accent text-white py-3 rounded-full text-sm font-semibold tracking-wider hover:bg-brand-accent-hover transition-all cursor-pointer"
               >

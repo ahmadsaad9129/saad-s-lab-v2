@@ -318,8 +318,9 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                 </motion.div>
               </motion.button>
 
-              <motion.button
-                onClick={() => onNavigate('resume')}
+              <motion.a
+                href="/resume/Ahmad_Saad_Resume.pdf"
+                download="Ahmad_Saad_Resume.pdf"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
                 variants={{
@@ -343,7 +344,7 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                   <FileText size={12} className="shrink-0" />
                 </motion.div>
                 <span>DOWNLOAD RESUME</span>
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* Minimal Text-Based Credentials Row */}

@@ -283,8 +283,9 @@ export default function EasterEgg({ isOpen, onClose, onNavigate, isDarkMode }: E
                 <div className="space-y-3 pt-4">
                   
                   {/* Download Resume Button */}
-                  <motion.button
-                    onClick={() => handleNavigateTo('resume')}
+                  <motion.a
+                    href="/resume/Ahmad_Saad_Resume.pdf"
+                    download="Ahmad_Saad_Resume.pdf"
                     whileHover="hover"
                     whileTap={{ scale: 0.98 }}
                     variants={{
@@ -297,7 +298,7 @@ export default function EasterEgg({ isOpen, onClose, onNavigate, isDarkMode }: E
                   >
                     <FileText size={13} />
                     <span>DOWNLOAD RÉSUMÉ</span>
-                  </motion.button>
+                  </motion.a>
 
                   {/* LinkedIn Connect Button */}
                   <motion.a
