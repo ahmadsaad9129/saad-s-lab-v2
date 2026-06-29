@@ -10,11 +10,17 @@ async function run() {
     console.log('Reading SVG content...');
     let svgContent = fs.readFileSync(svgPath, 'utf8');
     
-    // Resolve relative path to local avatar for the compilation process
+    // Convert the local avatar to a Base64 data URI for embedding directly in the SVG
     const localAvatarPath = path.join(process.cwd(), 'public', 'avatar.jpg');
+    if (!fs.existsSync(localAvatarPath)) {
+      throw new Error(`Avatar image not found at ${localAvatarPath}`);
+    }
+    const avatarBuffer = fs.readFileSync(localAvatarPath);
+    const avatarBase64 = `data:image/jpeg;base64,${avatarBuffer.toString('base64')}`;
+    
     svgContent = svgContent.replace(
       'href="https://www.saadslab.online/avatar.jpg"',
-      `href="${localAvatarPath}"`
+      `href="${avatarBase64}"`
     );
     
     console.log('Converting SVG to high-quality 1200x630 PNG...');
