@@ -76,13 +76,10 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
                 <p className={`font-semibold text-base md:text-lg tracking-tight ${
                   isDarkMode ? 'text-zinc-200' : 'text-zinc-800'
                 }`}>
-                  I believe exceptional design solves real-world friction. Every experience I create starts with deep human insight, analyzing user behavior, cognitive load, and visual patterns to design solutions that feel completely natural.
+                  I am a human-centered UX designer dedicated to turning complex digital challenges into elegant, intuitive experiences. By combining deep user research with strategic problem-solving, I create structured interface designs that feel completely natural and align user needs with business goals.
                 </p>
                 <p>
-                  Bridging the gap between engineering complexity and intuitive interaction, I turn intricate workflows into simple, conversational, and premium digital products. I translate complex data into clean interfaces that align user needs with strategic business growth.
-                </p>
-                <p>
-                  From precise logic architecture in Figma to cohesive visual languages, my dedication lies in layout precision, high accessibility standards, and immersive micro-interactions.
+                  From initial research and wireframing to pixel-perfect visual design and immersive micro-interactions, I focus on every detail. I craft highly accessible, strategic products that elevate brands and build meaningful connections with people.
                 </p>
               </div>
             </div>
