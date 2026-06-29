@@ -109,9 +109,9 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
                 <p className="text-xs text-zinc-500 mt-2">UX & Digital Product Designer • Creative Brand Identity Specialist</p>
               </div>
               <div className="text-right text-xs font-mono text-zinc-600 space-y-1">
+                <p className="font-bold text-zinc-800">New Delhi, India</p>
                 <p>ahmadsaad9129@gmail.com</p>
                 <p>linkedin.com/in/ahmadsaad9129</p>
-                <p>Uttar Pradesh, India</p>
               </div>
             </div>
 
@@ -209,21 +209,21 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
                   </h3>
                   
                   <div className="space-y-4 text-xs">
-                    <div className="space-y-0.5">
-                      <p className="font-bold text-zinc-950">MBA in Business Analytics</p>
-                      <p className="text-zinc-500">UPES (Online)</p>
+                    <div className="space-y-1">
+                      <p className="font-bold text-zinc-950 tracking-tight">MBA in Business Analytics</p>
+                      <p className="text-zinc-600 font-medium">University of Petroleum and Energy Studies (UPES)</p>
                       <p className="font-mono text-[10px] text-zinc-400">2025 – Present</p>
                     </div>
 
-                    <div className="space-y-0.5">
-                      <p className="font-bold text-zinc-950">Master's Certification (UX/UI)</p>
-                      <p className="text-zinc-500">Jamia Millia Islamia University</p>
+                    <div className="space-y-1">
+                      <p className="font-bold text-zinc-950 tracking-tight">Master's Certification (UX/UI)</p>
+                      <p className="text-zinc-600 font-medium">Jamia Millia Islamia University</p>
                       <p className="font-mono text-[10px] text-zinc-400">Completed 2025</p>
                     </div>
 
-                    <div className="space-y-0.5">
-                      <p className="font-bold text-zinc-950">Bachelor of Computer Applications</p>
-                      <p className="text-zinc-500">Integral University</p>
+                    <div className="space-y-1">
+                      <p className="font-bold text-zinc-950 tracking-tight">Bachelor of Computer Applications</p>
+                      <p className="text-zinc-600 font-medium">Integral University</p>
                       <p className="font-mono text-[10px] text-zinc-400">2022 – 2025</p>
                     </div>
                   </div>

@@ -60,7 +60,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`min-h-screen flex flex-col justify-between pt-28 pb-12 relative w-full overflow-hidden transition-colors duration-500`}
+      className="min-h-screen flex flex-col justify-center pt-32 pb-20 relative w-full overflow-hidden transition-colors duration-500"
     >
       {/* Dynamic Background subtle gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -72,11 +72,18 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
         }`} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex-1 flex items-center z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
           
-          {/* MOBILE ONLY: IMAGE FIRST */}
-          <div className="block lg:hidden w-full max-w-md mx-auto relative group">
+          {/* MOBILE ONLY: IMAGE FIRST WITH PREMIUM GLOW */}
+          <div className="block lg:hidden w-full max-w-[280px] sm:max-w-[320px] mx-auto relative group">
+            {/* Ambient Mobile Glow */}
+            <div 
+              className="absolute inset-0 rounded-3xl blur-2xl opacity-60 pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, rgba(124,92,255,0.2) 0%, rgba(0,0,0,0) 70%)'
+              }}
+            />
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -96,7 +103,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
           </div>
 
           {/* LEFT SIDE: CONTENT */}
-          <div className="lg:col-span-8 flex flex-col justify-center text-left space-y-6 md:space-y-8">
+          <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-6 md:space-y-8">
             
             {/* Minimal Premium Kicker */}
             <motion.div
@@ -162,7 +169,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className={`text-base md:text-lg leading-relaxed max-w-[580px] font-sans ${
+              className={`text-base md:text-lg leading-relaxed max-w-[540px] font-sans ${
                 isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
               }`}
             >
@@ -179,7 +186,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               {/* Primary: View Projects */}
               <button
                 onClick={() => onNavigate('projects')}
-                className={`px-8 py-4 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-brand-accent/20 border ${
+                className={`px-8 h-12 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-brand-accent/20 border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
                   isDarkMode 
                     ? 'bg-white text-black border-transparent hover:bg-zinc-100' 
                     : 'bg-zinc-900 text-white border-transparent hover:bg-zinc-800'
@@ -192,7 +199,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               {/* Secondary: Resume Page Link */}
               <button
                 onClick={() => onNavigate('resume')}
-                className={`px-8 py-4 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer border ${
+                className={`px-8 h-12 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center space-x-2.5 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
                   isDarkMode
                     ? 'bg-zinc-900/50 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 hover:border-zinc-700'
                     : 'bg-white border-zinc-200 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300'
@@ -206,14 +213,22 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
           </div>
 
           {/* DESKTOP ONLY: RIGHT SIDE FLOAT PORTRAIT */}
-          <div className="hidden lg:col-span-4 lg:flex items-center justify-center relative">
+          <div className="hidden lg:col-span-5 lg:flex items-center justify-center relative lg:-mt-6">
+            {/* Soft Premium Radial Glow Backdrop */}
+            <div 
+              className="absolute w-[450px] h-[450px] rounded-full blur-3xl opacity-60 pointer-events-none -z-10"
+              style={{
+                background: 'radial-gradient(circle, rgba(124,92,255,0.18) 0%, rgba(0,0,0,0) 70%)'
+              }}
+            />
+            
             <motion.div
               style={{
                 translateX,
                 translateY,
               }}
               transition={{ type: 'spring', stiffness: 100, damping: 25 }}
-              className={`w-full max-w-[340px] aspect-[4/5] rounded-[36px] overflow-hidden shadow-2xl relative border group ${
+              className={`w-full max-w-[380px] aspect-[4/5] rounded-[36px] overflow-hidden shadow-2xl relative border group transition-all duration-300 ${
                 isDarkMode ? 'border-zinc-800 bg-zinc-950/40' : 'border-zinc-200 bg-white'
               }`}
             >
@@ -234,43 +249,6 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
           </div>
 
         </div>
-      </div>
-
-      {/* FOOTER OF HERO: SCROLL TO EXPLORE INDICATOR */}
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex justify-center lg:justify-start items-center z-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          onClick={() => {
-            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className={`flex items-center space-x-3 cursor-pointer py-2 px-4 rounded-full border transition-all duration-300 hover:opacity-100 ${
-            isDarkMode 
-              ? 'border-zinc-800 hover:border-zinc-700 bg-zinc-900/20' 
-              : 'border-zinc-200 hover:border-zinc-300 bg-zinc-50'
-          }`}
-        >
-          {/* Scroll Wheel representation */}
-          <div className="w-4 h-7 rounded-full border-2 border-current flex justify-center p-1">
-            <motion.div
-              animate={{
-                y: [0, 8, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="w-1.5 h-1.5 rounded-full bg-brand-accent"
-            />
-          </div>
-          <span className={`text-[10px] font-mono tracking-widest uppercase font-semibold ${
-            isDarkMode ? 'text-zinc-400' : 'text-zinc-600'
-          }`}>
-            Scroll to Explore
-          </span>
-        </motion.div>
       </div>
 
     </section>

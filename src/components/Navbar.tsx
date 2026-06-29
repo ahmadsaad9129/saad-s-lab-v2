@@ -57,7 +57,9 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
         id="navbar"
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? 'glass-nav py-4 shadow-xl shadow-[rgba(0,0,0,0.3)]'
+            ? isDarkMode 
+              ? 'bg-[#0B0B0BC0] backdrop-blur-md border-b border-white/[0.05] py-4 shadow-lg shadow-[rgba(0,0,0,0.25)]'
+              : 'bg-white/80 backdrop-blur-md border-b border-black/[0.05] py-4 shadow-md shadow-[rgba(0,0,0,0.05)]'
             : 'bg-transparent py-6 border-b border-transparent'
         }`}
       >
@@ -81,19 +83,25 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* About (Section Link) */}
               <button
                 onClick={() => handleLinkClick('about', true)}
-                className={`text-sm tracking-wider font-medium cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
                   currentPath === 'home' 
-                    ? isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
-                    : isDarkMode ? 'text-zinc-450 hover:text-white' : 'text-zinc-500 hover:text-zinc-900'
+                    ? 'text-brand-accent'
+                    : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
                 }`}
               >
-                About
+                <span>About</span>
+                {currentPath === 'home' && (
+                  <motion.span
+                    layoutId="activeNavIndicator"
+                    className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-accent rounded-full"
+                  />
+                )}
               </button>
 
               {/* Projects (Dedicated Page Link) */}
               <button
                 onClick={() => onNavigate('projects')}
-                className={`relative py-1 text-sm tracking-wider font-medium cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
                   currentPath === 'projects'
                     ? 'text-brand-accent font-bold'
                     : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
@@ -111,7 +119,7 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* Journey (Dedicated Page Link) */}
               <button
                 onClick={() => onNavigate('journey')}
-                className={`relative py-1 text-sm tracking-wider font-medium cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
                   currentPath === 'journey'
                     ? 'text-brand-accent font-bold'
                     : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
@@ -129,7 +137,7 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* Resume (Dedicated Page Link) */}
               <button
                 onClick={() => onNavigate('resume')}
-                className={`relative py-1 text-sm tracking-wider font-medium cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
                   currentPath === 'resume'
                     ? 'text-brand-accent font-bold'
                     : isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
@@ -147,11 +155,11 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
               {/* Contact (Section Link) */}
               <button
                 onClick={() => handleLinkClick('contact', true)}
-                className={`text-sm tracking-wider font-medium cursor-pointer transition-colors ${
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors ${
                   isDarkMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
                 }`}
               >
-                Contact
+                <span>Contact</span>
               </button>
 
             </div>

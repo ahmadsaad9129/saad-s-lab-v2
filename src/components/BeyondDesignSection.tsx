@@ -17,7 +17,13 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        <div className="text-left space-y-2 mb-16 max-w-2xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-left space-y-2 mb-16 max-w-2xl"
+        >
           <p className="text-xs font-mono tracking-widest text-brand-accent uppercase">Life & Passion</p>
           <h2 className={`text-4xl md:text-5xl font-display font-bold tracking-tight ${
             isDarkMode ? 'text-white' : 'text-zinc-900'
@@ -29,7 +35,7 @@ export default function BeyondDesignSection({ isDarkMode }: BeyondDesignSectionP
           }`}>
             Design is only one part of my journey. I actively learn, contribute, build communities and explore emerging technologies.
           </p>
-        </div>
+        </motion.div>
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">

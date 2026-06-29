@@ -7,27 +7,11 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({ isDarkMode }: AboutSectionProps) {
-  const cards = [
+  const cards: { icon: React.ReactNode; title: string; subtitle: string; badge?: string }[] = [
     {
       icon: <MapPin size={18} className="text-brand-accent" />,
       title: "New Delhi, India",
       subtitle: "Location"
-    },
-    {
-      icon: <GraduationCap size={18} className="text-indigo-400" />,
-      title: "Bachelor of Computer Applications",
-      subtitle: "Integral University"
-    },
-    {
-      icon: <GraduationCap size={18} className="text-amber-500" />,
-      title: "Master of Business Administration (Business Analytics)",
-      subtitle: "University of Petroleum and Energy Studies (UPES)",
-      badge: "Currently Pursuing"
-    },
-    {
-      icon: <Palette size={18} className="text-purple-400" />,
-      title: "Master's Certification in UI/UX Design",
-      subtitle: "Jamia Millia Islamia"
     },
     {
       icon: <Briefcase size={18} className="text-emerald-400" />,
@@ -136,7 +120,7 @@ export default function AboutSection({ isDarkMode }: AboutSectionProps) {
               }`}>
                 Quick Credentials
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 {cards.map((item, index) => (
                   <motion.div
                     key={index}
