@@ -66,7 +66,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="min-h-[80vh] md:min-h-[85vh] lg:min-h-screen flex flex-col justify-center pt-24 pb-8 md:pt-28 md:pb-16 relative w-full overflow-hidden transition-colors duration-500"
+      className="min-h-[80vh] sm:min-h-[85vh] lg:min-h-screen flex flex-col justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 lg:pt-28 lg:pb-16 relative w-full overflow-hidden transition-colors duration-500"
     >
       {/* Dynamic Background subtle gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -79,17 +79,17 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 lg:gap-20 xl:gap-24 items-center w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 xl:gap-24 items-center w-full">
           
           {/* LEFT COLUMN: CONTENT */}
-          <div className="md:col-span-7 flex flex-col justify-center text-left">
+          <div className="lg:col-span-7 flex flex-col justify-center text-left">
             
-            {/* MOBILE ONLY: PORTRAIT (appears right after navbar/top space, before signature) */}
-            <div className="block md:hidden mb-6 w-full max-w-[150px] sm:max-w-[170px]">
+            {/* MOBILE & TABLET ONLY: PORTRAIT (appears right after navbar/top space, before signature) */}
+            <div className="block lg:hidden mb-10 w-[78%] max-w-[280px] sm:max-w-[320px] md:max-w-[360px] mx-auto">
               <div className="relative">
                 {/* Soft Premium Radial Glow Backdrop */}
                 <div 
-                  className="absolute inset-0 rounded-full blur-xl opacity-40 pointer-events-none -z-10"
+                  className="absolute inset-0 rounded-full blur-2xl opacity-40 pointer-events-none -z-10"
                   style={{
                     background: 'radial-gradient(circle, rgba(124,92,255,0.15) 0%, rgba(0,0,0,0) 70%)'
                   }}
@@ -99,19 +99,19 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className={`aspect-[4/5] rounded-[20px] p-1.5 relative transition-all duration-300 ${
+                  className={`aspect-[4/5] rounded-[24px] p-2 relative transition-all duration-300 ${
                     isDarkMode 
-                      ? 'bg-zinc-950 border border-zinc-850 shadow-[0_10px_30px_rgba(0,0,0,0.6)]' 
-                      : 'bg-white border border-zinc-200 shadow-lg'
+                      ? 'bg-zinc-950 border border-zinc-850 shadow-[0_12px_35px_rgba(0,0,0,0.65)]' 
+                      : 'bg-white border border-zinc-200 shadow-xl'
                   }`}
                 >
                   {/* Thin gold border frame */}
-                  <div className={`absolute inset-0 m-1 rounded-[15px] border ${
+                  <div className={`absolute inset-0 m-1.5 rounded-[18px] border ${
                     isDarkMode ? 'border-brand-accent/25' : 'border-brand-accent/20'
                   } pointer-events-none z-20`} />
                   
                   {/* Image Container with crop focused on the face */}
-                  <div className="w-full h-full overflow-hidden relative rounded-[12px]">
+                  <div className="w-full h-full overflow-hidden relative rounded-[14px]">
                     <img
                       src={imageSrc}
                       onError={handleImageError}
@@ -125,66 +125,63 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
             </div>
 
             {/* Name Signature Block */}
-            <div className="flex flex-col gap-5 md:gap-6 mb-10 md:mb-12 relative">
-              {/* Elegant Cursive Signature in Gold */}
-              <motion.div
-                initial={{ opacity: 0, y: 10, rotate: -3 }}
-                animate={{ opacity: 1, y: 0, rotate: -2 }}
-                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="font-signature text-3.5xl sm:text-4xl md:text-[38px] lg:text-[44px] text-brand-accent select-none origin-left pl-1"
+            <motion.div
+              initial={{ opacity: 0, y: 10, rotate: -3 }}
+              animate={{ opacity: 1, y: 0, rotate: -2 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-signature text-[42px] xs:text-[46px] sm:text-[50px] lg:text-[44px] xl:text-[48px] text-brand-accent select-none origin-left pl-1 mb-4 lg:mb-6"
+            >
+              Ahmad Saad
+            </motion.div>
+            
+            {/* Main Heading Titles */}
+            <h1 className="text-[32px] sm:text-[40px] md:text-[38px] lg:text-[52px] xl:text-[64px] font-display font-black tracking-tight leading-[1.05] sm:leading-[1.02] select-none uppercase flex flex-col gap-2 sm:gap-3 lg:gap-4 mb-8 lg:mb-12">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className={`block ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}
               >
-                Ahmad Saad
-              </motion.div>
-              
-              {/* Main Heading Titles */}
-              <h1 className="text-[32px] sm:text-[40px] md:text-[38px] lg:text-[52px] xl:text-[64px] font-display font-black tracking-tight leading-[1.02] select-none uppercase flex flex-col gap-3 sm:gap-4 md:gap-5">
-                <motion.span
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className={`block ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}
-                >
-                  UI/UX Designer
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-brand-accent"
-                >
-                  Digital Creator
-                </motion.span>
-              </h1>
-            </div>
+                UI/UX Designer
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="block text-brand-accent"
+              >
+                Digital Creator
+              </motion.span>
+            </h1>
 
             {/* Buttons Group */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="flex flex-row items-center gap-[14px] md:gap-[18px] mb-10 md:mb-12"
+              className="grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-row lg:items-center lg:gap-6 mb-8 lg:mb-12 w-full"
             >
               <button
                 onClick={() => onNavigate('projects')}
-                className={`px-5 sm:px-8 h-11 md:h-12 rounded-full text-[11px] md:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-md hover:shadow-brand-accent/15 border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+                className={`w-full lg:w-auto px-5 sm:px-8 h-11 md:h-12 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-md hover:shadow-brand-accent/15 border hover:-translate-y-0.5 active:translate-y-0 ${
                   isDarkMode 
                     ? 'bg-white text-black border-transparent hover:bg-zinc-100' 
                     : 'bg-zinc-900 text-white border-transparent hover:bg-zinc-800'
                 }`}
               >
                 <span>VIEW PROJECTS</span>
-                <ArrowRight size={12} />
+                <ArrowRight size={12} className="shrink-0" />
               </button>
 
               <button
                 onClick={() => onNavigate('resume')}
-                className={`px-5 sm:px-8 h-11 md:h-12 rounded-full text-[11px] md:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 shrink-0 ${
+                className={`w-full lg:w-auto px-5 sm:px-8 h-11 md:h-12 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer border hover:-translate-y-0.5 active:translate-y-0 ${
                   isDarkMode
                     ? 'bg-zinc-900/50 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-900 hover:border-zinc-700'
                     : 'bg-white border-zinc-200 text-zinc-650 hover:text-zinc-900 hover:bg-zinc-50 hover:border-zinc-300'
                 }`}
               >
-                <FileText size={12} />
+                <FileText size={12} className="shrink-0" />
                 <span>DOWNLOAD RESUME</span>
               </button>
             </motion.div>
@@ -199,7 +196,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 w-full">
                 
                 {/* Card 1: UI/UX & Graphic Design */}
-                <div className={`flex items-center space-x-3.5 p-4.5 md:p-5.5 rounded-xl border transition-all duration-300 h-full min-h-[72px] sm:min-h-0 ${
+                <div className={`flex items-center space-x-3.5 p-4 lg:p-6 rounded-xl border transition-all duration-300 h-full min-h-[58px] lg:min-h-[72px] ${
                   isDarkMode 
                     ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
                     : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
@@ -218,7 +215,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                 </div>
 
                 {/* Card 2: Snapchat Lens Creator */}
-                <div className={`flex items-center space-x-3.5 p-4.5 md:p-5.5 rounded-xl border transition-all duration-300 h-full min-h-[72px] sm:min-h-0 ${
+                <div className={`flex items-center space-x-3.5 p-4 lg:p-6 rounded-xl border transition-all duration-300 h-full min-h-[58px] lg:min-h-[72px] ${
                   isDarkMode 
                     ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
                     : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
@@ -237,7 +234,7 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                 </div>
 
                 {/* Card 3: Google Certified */}
-                <div className={`flex items-center space-x-3.5 p-4.5 md:p-5.5 rounded-xl border transition-all duration-300 h-full min-h-[72px] sm:min-h-0 ${
+                <div className={`flex items-center space-x-3.5 p-4 lg:p-6 rounded-xl border transition-all duration-300 h-full min-h-[58px] lg:min-h-[72px] ${
                   isDarkMode 
                     ? 'bg-zinc-950/40 border-zinc-900 text-zinc-300 hover:border-brand-accent/20 hover:bg-zinc-900/10' 
                     : 'bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-brand-accent/20 hover:shadow'
@@ -249,6 +246,9 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
                     <p className={`text-[11px] font-bold tracking-tight ${isDarkMode ? 'text-zinc-200' : 'text-zinc-800'}`}>
                       Google Certified
                     </p>
+                    <p className={`text-[8px] font-mono uppercase tracking-wider opacity-0 select-none`}>
+                      UX Practitioner
+                    </p>
                   </div>
                 </div>
 
@@ -257,8 +257,8 @@ export default function HeroSection({ isDarkMode, onNavigate }: HeroSectionProps
 
           </div>
 
-          {/* DESKTOP/TABLET RIGHT COLUMN: PROFILE IMAGE (hidden on mobile, perfectly integrated on md+) */}
-          <div className="hidden md:flex md:col-span-5 items-center justify-center relative w-full md:justify-end">
+          {/* DESKTOP RIGHT COLUMN: PROFILE IMAGE (hidden on mobile/tablet, perfectly integrated on lg+) */}
+          <div className="hidden lg:flex lg:col-span-5 items-center justify-center relative w-full lg:justify-end">
             {/* Soft Premium Radial Glow Backdrop */}
             <div 
               className="absolute w-[200px] h-[200px] md:w-[240px] md:h-[240px] lg:w-[380px] lg:h-[380px] rounded-full blur-3xl opacity-50 pointer-events-none -z-10"
