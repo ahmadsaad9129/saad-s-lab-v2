@@ -108,129 +108,168 @@ async function generatePDF() {
   
   leftY += 12;
 
-  // --- Job 1 ---
+  // --- Job 1 (TAQNIK) ---
   doc.fillColor(COLOR_PRIMARY)
      .font(FONT_BOLD)
-     .fontSize(10)
-     .text('Freelance Graphic & UX Designer', leftColX, leftY);
+     .fontSize(9.5)
+     .text('UX Designer | Client Experience Specialist', leftColX, leftY);
   
   doc.fillColor(COLOR_SECONDARY)
      .font(FONT_REGULAR)
-     .fontSize(8.5)
-     .text('2023 – Present', leftColX + leftColWidth - 80, leftY, { width: 80, align: 'right' });
+     .fontSize(8)
+     .text('June 2026 – Present', leftColX + leftColWidth - 95, leftY, { width: 95, align: 'right' });
 
-  leftY += 13;
+  leftY += 11;
   doc.fillColor(COLOR_ACCENT)
      .font(FONT_BOLD)
-     .fontSize(8)
-     .text('INDEPENDENT PRACTICE', leftColX, leftY);
+     .fontSize(7.5)
+     .text('TAQNIK', leftColX, leftY);
 
-  leftY += 12;
+  leftY += 10;
   const bulletsJob1 = [
-    'Designing user-centered digital products, brand identity books, interfaces, and visual assets for local and international clients.',
-    'Delivering responsive web layouts in Figma, following WCAG contrast ratios and robust modular layouts.',
-    'Continuously researching emerging interactive systems, spatial AR filters, and advanced design tokens.'
+    'Collaborating with clients to understand business goals, gather requirements, and deliver user-centered digital solutions.',
+    'Driving stakeholder collaboration, UX strategy mapping, requirements gathering, and client discovery processes.'
   ];
 
   bulletsJob1.forEach(bullet => {
     doc.fillColor(COLOR_PRIMARY)
        .font(FONT_REGULAR)
-       .fontSize(8);
+       .fontSize(7.5);
     
-    // Draw small square bullet
-    doc.rect(leftColX + 4, leftY + 3, 2, 2).fill();
+    doc.rect(leftColX + 4, leftY + 2.5, 2, 2).fill();
     
-    doc.text(bullet, leftColX + 12, leftY, {
-      width: leftColWidth - 12,
-      lineGap: 1.5
+    doc.text(bullet, leftColX + 11, leftY, {
+      width: leftColWidth - 11,
+      lineGap: 1
     });
     
-    leftY += doc.heightOfString(bullet, { width: leftColWidth - 12, lineGap: 1.5 }) + 4;
+    leftY += doc.heightOfString(bullet, { width: leftColWidth - 11, lineGap: 1 }) + 3;
   });
 
-  leftY += 6;
+  leftY += 4;
 
-  // --- Job 2 ---
+  // --- Job 2 (Freelance) ---
   doc.fillColor(COLOR_PRIMARY)
      .font(FONT_BOLD)
-     .fontSize(10)
-     .text('UI/UX Designer Intern', leftColX, leftY);
+     .fontSize(9.5)
+     .text('Freelance Graphic & UX Designer', leftColX, leftY);
   
   doc.fillColor(COLOR_SECONDARY)
      .font(FONT_REGULAR)
-     .fontSize(8.5)
-     .text('Dec 2025', leftColX + leftColWidth - 80, leftY, { width: 80, align: 'right' });
+     .fontSize(8)
+     .text('2023 – Present', leftColX + leftColWidth - 80, leftY, { width: 80, align: 'right' });
 
-  leftY += 13;
+  leftY += 11;
   doc.fillColor(COLOR_ACCENT)
      .font(FONT_BOLD)
-     .fontSize(8)
-     .text('CODEALPHA', leftColX, leftY);
+     .fontSize(7.5)
+     .text('INDEPENDENT PRACTICE', leftColX, leftY);
 
-  leftY += 12;
+  leftY += 10;
   const bulletsJob2 = [
-    'Collaborated on designing complex information boards, dashboard data layouts, and detailed user journey wireframes.',
-    'Prototyped multi-screen workflows in Figma, increasing user task success through clean visual hierarchy.',
-    'Conducted usability checks and integrated stakeholder feedback under quick iteration cycles.'
+    'Designing user-centered digital products, brand identity books, interfaces, and visual assets for local and international clients.',
+    'Delivering responsive web layouts in Figma, following WCAG contrast ratios and robust modular layouts.',
+    'Continuously researching emerging interactive systems, spatial AR filters, and advanced design tokens.'
   ];
 
   bulletsJob2.forEach(bullet => {
     doc.fillColor(COLOR_PRIMARY)
        .font(FONT_REGULAR)
-       .fontSize(8);
+       .fontSize(7.5);
     
-    doc.rect(leftColX + 4, leftY + 3, 2, 2).fill();
+    doc.rect(leftColX + 4, leftY + 2.5, 2, 2).fill();
     
-    doc.text(bullet, leftColX + 12, leftY, {
-      width: leftColWidth - 12,
-      lineGap: 1.5
+    doc.text(bullet, leftColX + 11, leftY, {
+      width: leftColWidth - 11,
+      lineGap: 1
     });
     
-    leftY += doc.heightOfString(bullet, { width: leftColWidth - 12, lineGap: 1.5 }) + 4;
+    leftY += doc.heightOfString(bullet, { width: leftColWidth - 11, lineGap: 1 }) + 3;
   });
 
-  leftY += 6;
+  leftY += 4;
 
-  // --- Job 3 ---
+  // --- Job 3 (CodeAlpha) ---
   doc.fillColor(COLOR_PRIMARY)
      .font(FONT_BOLD)
-     .fontSize(10)
-     .text('UX Designer & Social Media Intern', leftColX, leftY);
+     .fontSize(9.5)
+     .text('UI/UX Designer Intern', leftColX, leftY);
   
   doc.fillColor(COLOR_SECONDARY)
      .font(FONT_REGULAR)
-     .fontSize(8.5)
-     .text('Mar 2025 – Sept 2025', leftColX + leftColWidth - 100, leftY, { width: 100, align: 'right' });
+     .fontSize(8)
+     .text('Dec 2025', leftColX + leftColWidth - 80, leftY, { width: 80, align: 'right' });
 
-  leftY += 13;
+  leftY += 11;
   doc.fillColor(COLOR_ACCENT)
      .font(FONT_BOLD)
-     .fontSize(8)
-     .text('AQUARGIN PVT. LTD.', leftColX, leftY);
+     .fontSize(7.5)
+     .text('CODEALPHA', leftColX, leftY);
 
-  leftY += 12;
+  leftY += 10;
   const bulletsJob3 = [
-    'Crafted clean mobile and desktop user interfaces, greatly improving digital brand equity and aesthetic alignment.',
-    'Created high-sentiment corporate visual guidelines, unifying typography and spacing rules for public-facing assets.',
-    'Integrated with front-end teams to support asset handoffs and verify faithful HTML/CSS translation of designs.'
+    'Collaborated on designing complex information boards, dashboard data layouts, and detailed user journey wireframes.',
+    'Prototyped multi-screen workflows in Figma, increasing user task success through clean visual hierarchy.',
+    'Conducted usability checks and integrated stakeholder feedback under quick iteration cycles.'
   ];
 
   bulletsJob3.forEach(bullet => {
     doc.fillColor(COLOR_PRIMARY)
        .font(FONT_REGULAR)
-       .fontSize(8);
+       .fontSize(7.5);
     
-    doc.rect(leftColX + 4, leftY + 3, 2, 2).fill();
+    doc.rect(leftColX + 4, leftY + 2.5, 2, 2).fill();
     
-    doc.text(bullet, leftColX + 12, leftY, {
-      width: leftColWidth - 12,
-      lineGap: 1.5
+    doc.text(bullet, leftColX + 11, leftY, {
+      width: leftColWidth - 11,
+      lineGap: 1
     });
     
-    leftY += doc.heightOfString(bullet, { width: leftColWidth - 12, lineGap: 1.5 }) + 4;
+    leftY += doc.heightOfString(bullet, { width: leftColWidth - 11, lineGap: 1 }) + 3;
   });
 
-  leftY += 15;
+  leftY += 4;
+
+  // --- Job 4 (Aquargin) ---
+  doc.fillColor(COLOR_PRIMARY)
+     .font(FONT_BOLD)
+     .fontSize(9.5)
+     .text('UX Designer & Social Media Intern', leftColX, leftY);
+  
+  doc.fillColor(COLOR_SECONDARY)
+     .font(FONT_REGULAR)
+     .fontSize(8)
+     .text('Mar 2025 – Sept 2025', leftColX + leftColWidth - 100, leftY, { width: 100, align: 'right' });
+
+  leftY += 11;
+  doc.fillColor(COLOR_ACCENT)
+     .font(FONT_BOLD)
+     .fontSize(7.5)
+     .text('AQUARGIN PVT. LTD.', leftColX, leftY);
+
+  leftY += 10;
+  const bulletsJob4 = [
+    'Crafted clean mobile and desktop user interfaces, greatly improving digital brand equity and aesthetic alignment.',
+    'Created high-sentiment corporate visual guidelines, unifying typography and spacing rules for public-facing assets.',
+    'Integrated with front-end teams to support asset handoffs and verify faithful HTML/CSS translation of designs.'
+  ];
+
+  bulletsJob4.forEach(bullet => {
+    doc.fillColor(COLOR_PRIMARY)
+       .font(FONT_REGULAR)
+       .fontSize(7.5);
+    
+    doc.rect(leftColX + 4, leftY + 2.5, 2, 2).fill();
+    
+    doc.text(bullet, leftColX + 11, leftY, {
+      width: leftColWidth - 11,
+      lineGap: 1
+    });
+    
+    leftY += doc.heightOfString(bullet, { width: leftColWidth - 11, lineGap: 1 }) + 3;
+  });
+
+  leftY += 12;
 
   // Section: Notable Projects
   doc.fillColor(COLOR_PRIMARY)

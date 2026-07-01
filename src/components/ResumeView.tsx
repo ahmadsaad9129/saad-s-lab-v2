@@ -132,6 +132,19 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
                     {/* Job 1 */}
                     <div className="space-y-1">
                       <div className="flex justify-between items-start font-display">
+                        <h4 className="text-sm font-bold text-zinc-950">UX Designer | Client Experience Specialist</h4>
+                        <span className="text-xs font-mono font-medium text-zinc-500">June 2026 – Present</span>
+                      </div>
+                      <p className="text-xs font-semibold text-brand-accent uppercase tracking-wider">TAQNIK</p>
+                      <ul className="list-disc pl-4 text-xs text-zinc-600 space-y-1 leading-relaxed mt-1.5">
+                        <li>Collaborating with clients to understand business goals, gather requirements, and deliver user-centered digital solutions through effective UX planning.</li>
+                        <li>Driving stakeholder collaboration, UX strategy mapping, requirements gathering, and client discovery processes.</li>
+                      </ul>
+                    </div>
+
+                    {/* Job 2 */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-start font-display">
                         <h4 className="text-sm font-bold text-zinc-950">Freelance Graphic & UX Designer</h4>
                         <span className="text-xs font-mono font-medium text-zinc-500">2023 – Present</span>
                       </div>
@@ -143,7 +156,7 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
                       </ul>
                     </div>
 
-                    {/* Job 2 */}
+                    {/* Job 3 */}
                     <div className="space-y-1">
                       <div className="flex justify-between items-start font-display">
                         <h4 className="text-sm font-bold text-zinc-950">UI/UX Designer Intern</h4>
@@ -157,7 +170,7 @@ export default function ResumeView({ onBack }: ResumeViewProps) {
                       </ul>
                     </div>
 
-                    {/* Job 3 */}
+                    {/* Job 4 */}
                     <div className="space-y-1">
                       <div className="flex justify-between items-start font-display">
                         <h4 className="text-sm font-bold text-zinc-950">UX Designer & Social Media Intern</h4>

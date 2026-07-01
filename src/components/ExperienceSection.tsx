@@ -132,9 +132,10 @@ export default function ExperienceSection({ experiences, isDarkMode }: Experienc
                             <CheckCircle2 size={10} />
                             <span>COMPLETED</span>
                           </span>
-                        ) : exp.duration.includes('Ongoing') ? (
-                          <span className="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full animate-pulse">
-                            ACTIVE
+                        ) : exp.status === 'Current' || exp.duration.includes('Present') || exp.duration.includes('Ongoing') ? (
+                          <span className="bg-[#EAB308]/10 border border-[#EAB308]/30 text-[#EAB308] text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full flex items-center space-x-1.5">
+                            <Circle size={8} className="fill-[#EAB308] text-[#EAB308] animate-pulse" />
+                            <span>CURRENT</span>
                           </span>
                         ) : (
                           <span className="bg-zinc-500/10 border border-zinc-500/20 text-zinc-400 text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full">
