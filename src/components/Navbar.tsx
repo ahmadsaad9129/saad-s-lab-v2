@@ -122,6 +122,19 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
                 )}
               </button>
 
+              {/* Toolkit (Section Link) */}
+              <button
+                onClick={() => handleLinkClick('toolkit', true)}
+                className={`relative py-1 text-sm tracking-wider font-semibold cursor-pointer transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-brand-accent after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 ${
+                  isDarkMode ? 'text-zinc-400 hover:text-zinc-100' : 'text-zinc-600 hover:text-zinc-950'
+                }`}
+              >
+                <span className="flex items-center space-x-1">
+                  <span>✨</span>
+                  <span>Toolkit</span>
+                </span>
+              </button>
+
               {/* Journey (Dedicated Page Link) */}
               <button
                 onClick={() => onNavigate('journey')}
@@ -284,6 +297,16 @@ export default function Navbar({ currentPath, onNavigate, isDarkMode, onToggleDa
                 }`}
               >
                 Projects
+              </button>
+
+              {/* Toolkit link in mobile */}
+              <button
+                onClick={() => handleLinkClick('toolkit', true)}
+                className={`py-2 text-lg font-display font-bold tracking-wide transition-all text-left ${
+                  isDarkMode ? 'text-zinc-200 hover:text-white' : 'text-zinc-700 hover:text-zinc-900'
+                }`}
+              >
+                ✨ Toolkit
               </button>
 
               {/* Journey link in mobile */}
