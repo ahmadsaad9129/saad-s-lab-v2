@@ -23,7 +23,6 @@ import ContactSection from './components/ContactSection';
 import ProjectsView from './components/ProjectsView';
 import JourneyView from './components/JourneyView';
 import ResumeView from './components/ResumeView';
-import ToolkitSection from './components/ToolkitSection';
 import EasterEgg from './components/EasterEgg';
 
 export default function App() {
@@ -204,9 +203,6 @@ export default function App() {
 
                 {/* 2. About Section */}
                 <AboutSection isDarkMode={isDarkMode} />
-
-                {/* 2b. Interactive Toolkit Section */}
-                <ToolkitSection isDarkMode={isDarkMode} onNavigate={handleNavigate} />
 
                 {/* 3. Featured Projects Section */}
                 <ProjectsSection 
