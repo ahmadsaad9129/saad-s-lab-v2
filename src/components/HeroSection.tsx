@@ -18,13 +18,13 @@ const GoogleIcon = ({ size = 14 }: { size?: number }) => (
 
 export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [imageSrc, setImageSrc] = useState(heroPortrait);
-  const [imageAttempt, setImageAttempt] = useState(0); // 0 = local asset, 1 = /input_file_0.png, 2 = /input_file_1.png
+  const [imageSrc, setImageSrc] = useState('/input_file_0.png');
+  const [imageAttempt, setImageAttempt] = useState(0); // 0 = /input_file_0.png, 1 = local asset, 2 = /input_file_1.png
 
   const handleImageError = () => {
     if (imageAttempt === 0) {
       setImageAttempt(1);
-      setImageSrc('/input_file_0.png');
+      setImageSrc(heroPortrait);
     } else if (imageAttempt === 1) {
       setImageAttempt(2);
       setImageSrc('/input_file_1.png');
@@ -183,7 +183,7 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                       src={imageSrc}
                       onError={handleImageError}
                       alt="Ahmad Saad - Portrait"
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.25] scale-[1.18] origin-[center_15%] filter contrast-[1.02] brightness-[0.98]"
+                      className="w-full h-full object-cover object-[center_top] transition-transform duration-700 hover:scale-[1.08] scale-[1.02] origin-[center_top] filter contrast-[1.04] brightness-[0.98] saturate-[1.02]"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -282,6 +282,32 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
               <span>HUMAN-CENTERED UX</span>
               <span className="text-brand-accent font-bold">•</span>
               <span>VISUAL DESIGN</span>
+            </motion.div>
+
+            {/* Currently Designing Employment Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.62 }}
+              className={`mb-6 lg:mb-8 text-[9px] sm:text-[10px] font-mono tracking-[0.16em] flex flex-col items-center lg:items-start ${
+                isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
+              }`}
+            >
+              <span className="mb-1 text-[8px] tracking-[0.2em] opacity-75 uppercase">CURRENTLY DESIGNING AT</span>
+              <div className="flex items-center gap-2 flex-wrap justify-center lg:justify-start">
+                <a
+                  href="https://www.taqniklabs.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`font-bold tracking-wider inline-flex items-center gap-1 transition-colors duration-300 ${
+                    isDarkMode ? 'text-white hover:text-brand-accent' : 'text-zinc-900 hover:text-brand-accent'
+                  }`}
+                >
+                  TAQNIKLABS ↗
+                </a>
+                <span className="text-brand-accent">•</span>
+                <span className="tracking-wider">Lead UX Designer</span>
+              </div>
             </motion.div>
 
             {/* Seamless Interactive Buttons Group with Micro-interactions */}
