@@ -284,32 +284,6 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
               <span>VISUAL DESIGN</span>
             </motion.div>
 
-            {/* Currently Designing Employment Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.62 }}
-              className={`mb-6 lg:mb-8 text-[9px] sm:text-[10px] font-mono tracking-[0.16em] flex flex-col items-center lg:items-start ${
-                isDarkMode ? 'text-zinc-400' : 'text-zinc-500'
-              }`}
-            >
-              <span className="mb-1 text-[8px] tracking-[0.2em] opacity-75 uppercase">CURRENTLY DESIGNING AT</span>
-              <div className="flex items-center gap-2 flex-wrap justify-center lg:justify-start">
-                <a
-                  href="https://www.taqniklabs.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`font-bold tracking-wider inline-flex items-center gap-1 transition-colors duration-300 ${
-                    isDarkMode ? 'text-white hover:text-brand-accent' : 'text-zinc-900 hover:text-brand-accent'
-                  }`}
-                >
-                  TAQNIKLABS ↗
-                </a>
-                <span className="text-brand-accent">•</span>
-                <span className="tracking-wider">Lead UX Designer</span>
-              </div>
-            </motion.div>
-
             {/* Seamless Interactive Buttons Group with Micro-interactions */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -416,15 +390,24 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                 {/* Divider 2 */}
                 <div className={`hidden sm:block w-px h-8 ${isDarkMode ? 'bg-zinc-800/60' : 'bg-zinc-200'}`} />
 
-                {/* Google Certified */}
-                <div className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start">
-                  <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                    Google Certified
+                {/* TAQNIKLABS */}
+                <a 
+                  href="https://www.taqniklabs.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex flex-col text-center lg:text-left items-center lg:items-start group cursor-pointer"
+                >
+                  <span className={`text-[15px] sm:text-[17px] md:text-lg lg:text-xl font-display font-bold tracking-tight leading-snug transition-colors duration-300 ${
+                    isDarkMode ? 'text-white group-hover:text-brand-accent' : 'text-zinc-900 group-hover:text-brand-accent'
+                  }`}>
+                    TAQNIKLABS ↗
                   </span>
-                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
-                    Google Analytics & Digital Marketing
+                  <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed transition-colors duration-300 ${
+                    isDarkMode ? 'text-zinc-400 group-hover:text-brand-accent/80' : 'text-zinc-500 group-hover:text-brand-accent/80'
+                  }`}>
+                    LEAD UX DESIGNER
                   </span>
-                </div>
+                </a>
               </div>
             </motion.div>
 
