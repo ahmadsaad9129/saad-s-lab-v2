@@ -229,8 +229,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
   },
   {
     year: 'June 2026',
-    title: 'UX Designer | Client Experience Specialist',
-    subtitle: 'TAQNIK',
+    title: 'Co-Founder & Lead UX Designer | TAQNIKLABS',
     description: 'Collaborating with clients to understand business goals, gather requirements, and deliver user-centered digital solutions through effective UX planning.',
     icon: 'Briefcase',
     badge: 'Current',
@@ -240,8 +239,8 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
 
 export const EXPERIENCES_DATA: Experience[] = [
   {
-    role: 'UX Designer | Client Experience Specialist',
-    company: 'TAQNIK',
+    role: 'Co-Founder & Lead UX Designer | TAQNIKLABS',
+    company: 'TAQNIKLABS',
     duration: 'June 2026 — Present',
     description: 'Collaborating with clients to understand business goals, gather requirements, and deliver user-centered digital solutions through effective UX planning.',
     tags: ['Client Discovery', 'Requirement Gathering', 'Stakeholder Collaboration', 'UX Strategy'],

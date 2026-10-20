@@ -405,7 +405,7 @@ export default function HeroSection({ isDarkMode, onNavigate, onNameClick }: Her
                   <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-mono tracking-[0.18em] uppercase mt-1 leading-relaxed transition-colors duration-300 ${
                     isDarkMode ? 'text-zinc-400 group-hover:text-brand-accent/80' : 'text-zinc-500 group-hover:text-brand-accent/80'
                   }`}>
-                    LEAD UX DESIGNER
+                    Co-Founder & Lead UX Designer
                   </span>
                 </a>
               </div>

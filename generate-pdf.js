@@ -108,24 +108,18 @@ async function generatePDF() {
   
   leftY += 12;
 
-  // --- Job 1 (TAQNIK) ---
+  // --- Job 1 (TAQNIKLABS) ---
   doc.fillColor(COLOR_PRIMARY)
      .font(FONT_BOLD)
-     .fontSize(9.5)
-     .text('UX Designer | Client Experience Specialist', leftColX, leftY);
+     .fontSize(8.5)
+     .text('Co-Founder & Lead UX Designer | TAQNIKLABS', leftColX, leftY, { link: 'https://www.taqniklabs.in' });
   
   doc.fillColor(COLOR_SECONDARY)
      .font(FONT_REGULAR)
      .fontSize(8)
      .text('June 2026 – Present', leftColX + leftColWidth - 95, leftY, { width: 95, align: 'right' });
 
-  leftY += 11;
-  doc.fillColor(COLOR_ACCENT)
-     .font(FONT_BOLD)
-     .fontSize(7.5)
-     .text('TAQNIK', leftColX, leftY);
-
-  leftY += 10;
+  leftY += 12;
   const bulletsJob1 = [
     'Collaborating with clients to understand business goals, gather requirements, and deliver user-centered digital solutions.',
     'Driving stakeholder collaboration, UX strategy mapping, requirements gathering, and client discovery processes.'

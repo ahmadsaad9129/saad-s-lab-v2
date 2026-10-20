@@ -114,15 +114,32 @@ export default function ExperienceSection({ experiences, isDarkMode }: Experienc
                       {/* Top Header Row with Status Badges */}
                       <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                         <div className="space-y-1">
-                          <span className={`text-[10px] font-mono tracking-wider uppercase font-semibold ${
-                            isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
-                          }`}>
-                            {exp.company}
-                          </span>
+                          {exp.company && !exp.role.includes(exp.company) && (
+                            <span className={`text-[10px] font-mono tracking-wider uppercase font-semibold ${
+                              isDarkMode ? 'text-zinc-500' : 'text-zinc-400'
+                            }`}>
+                              {exp.company}
+                            </span>
+                          )}
                           <h3 className={`text-lg md:text-xl font-display font-bold leading-tight ${
                             isDarkMode ? 'text-white' : 'text-zinc-900'
                           }`}>
-                            {exp.role}
+                            {exp.role.includes('TAQNIKLABS') ? (
+                              <span>
+                                Co-Founder & Lead UX Designer |{' '}
+                                <a
+                                  href="https://www.taqniklabs.in"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:text-brand-accent transition-colors underline decoration-brand-accent/40 underline-offset-4 inline-flex items-center gap-1"
+                                >
+                                  <span>TAQNIKLABS</span>
+                                  <span className="text-xs">↗</span>
+                                </a>
+                              </span>
+                            ) : (
+                              exp.role
+                            )}
                           </h3>
                         </div>
 

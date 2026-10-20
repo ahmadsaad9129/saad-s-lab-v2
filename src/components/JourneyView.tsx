@@ -215,9 +215,24 @@ export default function JourneyView({ timelineEvents, isDarkMode }: JourneyViewP
                           <h4 className={`text-base md:text-lg font-display font-bold leading-tight ${
                             isDarkMode ? 'text-white' : 'text-zinc-900'
                           }`}>
-                            {event.title}
+                            {event.title.includes('TAQNIKLABS') ? (
+                              <span>
+                                Co-Founder & Lead UX Designer |{' '}
+                                <a
+                                  href="https://www.taqniklabs.in"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:text-brand-accent transition-colors underline decoration-brand-accent/40 underline-offset-4 inline-flex items-center gap-1"
+                                >
+                                  <span>TAQNIKLABS</span>
+                                  <span className="text-xs">↗</span>
+                                </a>
+                              </span>
+                            ) : (
+                              event.title
+                            )}
                           </h4>
-                          {event.subtitle && (
+                          {event.subtitle && !event.title.includes(event.subtitle) && (
                             <p className="text-xs text-zinc-400 font-semibold">{event.subtitle}</p>
                           )}
                         </div>
